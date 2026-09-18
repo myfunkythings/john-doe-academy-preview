@@ -5,185 +5,96 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#F4F0E8">
-<title>John Doe Academy — Minimal v4</title>
+<title>John Doe Academy — Minimal Preview</title>
 <style>
-:root{--bg:#F4F0E8;--ink:#201D19;--muted:#746E67;--line:#D8D1C7;--accent:#B95536;--ok:#55664D}
-*{box-sizing:border-box}
-html,body{margin:0;background:#24211D;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif}
-button{font:inherit;color:inherit}
-.app{width:min(100%,430px);min-height:100svh;margin:auto;background:var(--bg)}
-.s{display:none;min-height:100svh;padding:24px 22px 22px;flex-direction:column;gap:22px}
-.s.on{display:flex}
-.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.sp{flex:1}
-h1,h2,h3,p{margin:0}
-h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.03em}
-h1{font-size:36px;line-height:1.04}
-h2{font-size:30px;line-height:1.08}
-.name{font-size:14px;font-weight:600}.muted{font-size:13px;line-height:1.45;color:var(--muted)}
-.line{height:1px;background:var(--line)}
-.cta{width:100%;min-height:52px;border:0;border-radius:9px;background:var(--ink);color:white;font-size:15px;font-weight:600;padding:14px 16px;cursor:pointer}
-.cta.light{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.link{border:0;background:none;padding:0;color:var(--accent);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.progress{height:2px;background:var(--line)}.progress i{display:block;height:100%;background:var(--accent)}
-.next{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
-.next h2{font-size:25px;margin:4px 0 8px}
-.list{border-top:1px solid var(--ink)}
-.item{padding:15px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
-.item strong{font-size:15px;font-weight:600}.item span{font-size:12px;color:var(--muted)}
-.item.done strong{color:var(--ok)}.item.current span{color:var(--accent)}
-.back{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer}
-.rule{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
-.rule strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:400;line-height:1.08}
-.rule p{font-size:14px;color:var(--muted);line-height:1.45;margin-top:8px}
-.script{font-size:14px;line-height:1.55}
-.opt{width:100%;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;border:0;border-bottom:1px solid var(--line);background:none;padding:14px 0;text-align:left;cursor:pointer}
-.opt:first-child{border-top:1px solid var(--line)}
-.opt .l{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:11px;color:var(--muted)}
-.opt span:last-child{font-size:14px;line-height:1.42}
-.opt.sel{color:var(--accent)}.opt.sel .l{border-color:var(--accent);color:var(--accent)}
-.fb{display:none;font-size:13px;line-height:1.5;padding-top:12px}.fb.show{display:block}.fb.good{color:var(--ok)}.fb.bad{color:var(--accent)}
-.mark{font-size:22px;color:var(--ok)}
-.task{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
-.task h2{font-size:25px}.task p{font-size:14px;color:var(--muted);line-height:1.45;margin-top:8px}
-.ok{display:none;color:var(--ok);font-size:13px}.ok.show{display:block}
-.approve{border:0;background:none;padding:0;color:var(--ok);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-@media(min-width:700px){body{padding:24px 0}.app{min-height:844px}.s{min-height:844px;height:844px}}
+:root{--paper:#F4F0E8;--raised:#FAF7F1;--ink:#201D19;--muted:#736D65;--line:#D8D1C7;--accent:#B95536;--moss:#55664D}
+*{box-sizing:border-box}html,body{margin:0;background:#24211D;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif}button{font:inherit;color:inherit}
+.app{width:min(100%,430px);min-height:100svh;margin:auto;background:var(--paper);overflow:hidden}.scr{display:none;min-height:100svh;padding:26px 22px 22px;flex-direction:column;gap:22px}.scr.on{display:flex}
+.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.sp{flex:1}.topline{font-size:13px;font-weight:600;letter-spacing:.02em}.quiet{font-size:12px;line-height:1.45;color:var(--muted)}
+h1,h2,h3,p{margin:0}h1{font-family:Georgia,"Times New Roman",serif;font-size:40px;line-height:1.03;font-weight:400;letter-spacing:-.035em}h2{font-family:Georgia,"Times New Roman",serif;font-size:31px;line-height:1.07;font-weight:400;letter-spacing:-.03em}h3{font-size:16px;line-height:1.25;font-weight:600}.lead{font-size:16px;line-height:1.5;color:var(--muted)}
+.sep{height:1px;background:var(--line);width:100%}.cta{border:0;border-radius:10px;min-height:52px;width:100%;padding:14px 16px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;cursor:pointer}.cta.light{background:transparent;color:var(--ink);border:1px solid var(--line)}.link{border:0;background:none;padding:0;color:var(--accent);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.resume{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}.resume h3{font-family:Georgia,"Times New Roman",serif;font-size:26px;font-weight:400;line-height:1.12;margin:6px 0 8px}.stat{display:flex;align-items:baseline;justify-content:space-between}.stat strong{font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:400}.progress{height:2px;background:var(--line)}.progress i{display:block;height:100%;background:var(--accent)}
+.note{padding-left:12px;border-left:2px solid var(--line);font-size:14px;line-height:1.45}.back{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer}.module{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:14px 0;cursor:pointer}.module:first-of-type{border-top:1px solid var(--line)}.module small{display:block;margin-top:2px;font-size:11px;color:var(--muted)}.module.active small{color:var(--accent)}.module.done strong{color:var(--moss)}.chev{color:var(--muted);font-size:17px}
+.rule{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}.rule strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:400;line-height:1.08;margin:0 0 8px}.rule p{font-size:14px;line-height:1.48;color:var(--muted)}.script{font-size:14px;line-height:1.55;color:var(--ink)}
+.opt{width:100%;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;border:0;border-bottom:1px solid var(--line);background:transparent;padding:14px 0;text-align:left;cursor:pointer}.opt:first-child{border-top:1px solid var(--line)}.opt .l{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:11px;color:var(--muted)}.opt span:last-child{font-size:14px;line-height:1.42}.opt.sel{color:var(--accent)}.opt.sel .l{border-color:var(--accent);color:var(--accent)}.feedback{display:none;padding-top:14px;font-size:13px;line-height:1.5}.feedback.show{display:block}.feedback.good{color:var(--moss)}.feedback.bad{color:var(--accent)}
+.mark{width:42px;height:42px;border:1px solid #BFCBBB;border-radius:50%;display:grid;place-items:center;color:var(--moss);font-size:20px}.task{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}.task strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:400;line-height:1.14;margin:0 0 8px}.task p{font-size:14px;color:var(--muted);line-height:1.5}.ok{display:none;padding-left:12px;border-left:2px solid var(--moss);font-size:13px;color:var(--moss)}.ok.show{display:block}.list{border-top:1px solid var(--ink)}.item{padding:14px 0;border-bottom:1px solid var(--line)}.item .s{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.item .s.crit{color:var(--accent)}.item h3{margin:4px 0}.approve{margin-top:10px;border:0;background:none;padding:0;color:var(--moss);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media(min-width:700px){body{padding:24px 0}.app{height:844px;min-height:844px}.scr{height:844px;min-height:844px}}
 </style>
 </head>
 <body>
 <main class="app">
-
-<section id="home" class="s on">
-  <div class="row between">
-    <div class="name">Маша</div>
-    <div class="muted">John Doe Academy</div>
-  </div>
-
-  <div class="sp" style="flex:.15"></div>
-
-  <div class="next">
-    <div class="muted">Продолжить</div>
-    <h2>Бронирования и опоздавшие гости</h2>
-    <button class="link" onclick="go('lesson')">Открыть →</button>
-  </div>
-
-  <div>
-    <div class="row between"><span class="muted">Прогресс</span><span class="muted">74%</span></div>
-    <div class="progress" style="margin-top:8px"><i style="width:74%"></i></div>
-  </div>
-
+<section id="login" class="scr on">
+  <div class="row between"><div class="topline">John Doe Academy</div><div class="quiet">Demo</div></div>
+  <div class="sep"></div>
+  <div class="sp" style="flex:.35"></div>
+  <div><h1>Учиться быстро.<br>Работать спокойно.</h1><p class="lead" style="margin-top:16px;max-width:320px">Короткие модули по реальным стандартам John Doe.</p></div>
   <div class="sp"></div>
-  <button class="cta light" onclick="go('path')">Все модули</button>
+  <div class="resume"><div class="quiet">Далее</div><h3>Бронирования и опоздавшие гости</h3><p class="quiet">4 минуты</p></div>
+  <button class="cta" onclick="go('today')">Продолжить</button>
 </section>
-
-<section id="path" class="s">
-  <div class="row"><button class="back" onclick="go('home')">←</button><div class="name">Модули</div></div>
-
-  <div class="list">
-    <div class="item done"><div><strong>Открытие зала</strong></div><span>✓</span></div>
-    <div class="item done"><div><strong>Шаги сервиса</strong></div><span>✓</span></div>
-    <div class="item done"><div><strong>Меню</strong></div><span>✓</span></div>
-    <div class="item current" onclick="go('lesson')"><div><strong>Бронирования</strong></div><span>→</span></div>
-    <div class="item"><div><strong>Жалобы гостя</strong></div><span>→</span></div>
-    <div class="item"><div><strong>Закрытие зала</strong></div><span>→</span></div>
-  </div>
+<section id="today" class="scr">
+  <div class="row between"><div><div class="topline">Маша</div><div class="quiet">Официант</div></div><div class="quiet" style="color:var(--moss)">допуск действует</div></div>
+  <div class="resume"><div class="quiet">Продолжить</div><h3>Бронирования и опоздавшие гости</h3><button class="link" onclick="go('lesson')" style="margin-top:10px">Открыть модуль →</button></div>
+  <div><div class="stat"><span class="quiet">Путь</span><strong>74%</strong></div><div class="progress" style="margin-top:9px"><i style="width:74%"></i></div></div>
+  <div class="note">В праздничные дни время стола — 1,5–2 часа.</div>
+  <div class="sp"></div><button class="cta light" onclick="go('path')">Посмотреть весь путь</button>
 </section>
-
-<section id="lesson" class="s">
-  <div class="row"><button class="back" onclick="go('home')">←</button><div class="name">Бронирования</div></div>
-
-  <div class="sp" style="flex:.1"></div>
-
+<section id="path" class="scr">
+  <div class="row"><button class="back" onclick="go('today')">←</button><div><div class="topline">Мой путь</div><div class="quiet">Зал / сервис</div></div></div>
+  <div class="stat"><span class="quiet">До аттестации</span><strong>2 модуля</strong></div>
   <div>
-    <h1>Гость опаздывает</h1>
-    <p class="muted" style="margin-top:14px">Если задерживается — просим предупредить.</p>
+    <div class="module done"><div><strong>Открытие зала</strong><small>пройдено</small></div><div class="chev">✓</div></div>
+    <div class="module done"><div><strong>Шаги сервиса</strong><small>пройдено</small></div><div class="chev">✓</div></div>
+    <div class="module done"><div><strong>Меню: основы</strong><small>пройдено</small></div><div class="chev">✓</div></div>
+    <div class="module active" onclick="go('lesson')"><div><strong>Бронирования</strong><small>сейчас</small></div><div class="chev">→</div></div>
+    <div class="module"><div><strong>Жалобы гостя</strong><small>далее</small></div><div class="chev">→</div></div>
+    <div class="module"><div><strong>Закрытие зала</strong><small>практика</small></div><div class="chev">→</div></div>
   </div>
-
-  <div class="rule">
-    <strong>Бронь держим 15 минут.</strong>
-    <p>Исключение подтверждает менеджер.</p>
-  </div>
-
-  <div class="script">«Если будете задерживаться — пожалуйста, предупредите. Бронь держим 15 минут.»</div>
-
-  <div class="sp"></div>
-  <button class="cta" onclick="quiz()">Проверить себя</button>
 </section>
-
-<section id="quiz" class="s">
-  <div class="row"><button class="back" onclick="go('lesson')">←</button><div class="name">1 / 3</div></div>
+<section id="lesson" class="scr">
+  <div class="row"><button class="back" onclick="go('today')">←</button><div><div class="topline">Бронирования</div><div class="quiet">1 из 2</div></div></div>
+  <div class="progress"><i style="width:50%"></i></div>
+  <div class="sp" style="flex:.12"></div>
+  <div><h2>Гость опаздывает</h2><p class="lead" style="margin-top:13px">Если планы изменились или гость задерживается, просим предупредить.</p></div>
+  <div class="rule"><strong>Обычную бронь держим 15 минут.</strong><p>Если гостю нужно исключение — его подтверждает менеджер.</p></div>
+  <div class="script">«Если планы поменяются или будете задерживаться — пожалуйста, предупредите. Бронь держим 15 минут.»</div>
+  <div class="sp"></div><button class="cta" onclick="startQuiz()">Проверить себя</button>
+</section>
+<section id="quiz" class="scr">
+  <div class="row"><button class="back" onclick="go('lesson')">←</button><div><div class="topline">Вопрос</div><div class="quiet">1 из 3</div></div></div>
   <div class="progress"><i style="width:33%"></i></div>
-
-  <h2>Гость задержится на 20 минут. Что сделать?</h2>
-
-  <div id="opts"></div>
-  <div id="fb" class="fb"></div>
-
-  <div class="sp"></div>
+  <div><h2 style="font-size:29px">Гость задержится на 20 минут. Что сделать?</h2></div>
+  <div id="opts"></div><div id="feed" class="feedback"></div><div class="sp"></div>
   <button id="next" class="cta" style="display:none" onclick="go('result')">Дальше</button>
 </section>
-
-<section id="result" class="s">
-  <div class="mark">✓</div>
-  <div class="sp" style="flex:.18"></div>
-
-  <div>
-    <h1>Верно.</h1>
-    <p class="muted" style="margin-top:14px">Исключение от стандарта подтверждает менеджер.</p>
-  </div>
-
-  <div class="sp"></div>
-  <button class="cta" onclick="go('practice')">К практике</button>
+<section id="result" class="scr">
+  <div class="mark">✓</div><div class="sp" style="flex:.15"></div>
+  <div><h2>Верно.</h2><p class="lead" style="margin-top:14px">Правило подтверждаем, а нестандартные условия передаём менеджеру.</p></div>
+  <div class="note" style="border-color:var(--moss)">Так команда не создаёт разные правила в зависимости от того, кто взял трубку.</div>
+  <div class="sp"></div><button class="cta" onclick="go('practice')">Перейти к практике</button>
 </section>
-
-<section id="practice" class="s">
-  <div class="name">Практика</div>
-
-  <div class="sp" style="flex:.1"></div>
-
-  <div class="task">
-    <h2>Принять бронь по телефону.</h2>
-    <p>Повторить данные гостю и проговорить правило 15 минут.</p>
-  </div>
-
-  <div class="muted">Ждёт подтверждения менеджера.</div>
-  <div id="ok" class="ok">✓ Подтверждено.</div>
-
-  <div class="sp"></div>
-  <button class="cta light" onclick="go('manager')">Вид менеджера</button>
+<section id="practice" class="scr">
+  <div class="topline">Практика</div><h2>Проверить навык на смене</h2><p class="lead">После этого менеджер подтверждает допуск.</p>
+  <div class="task"><strong>Принять реальную бронь по телефону по стандарту.</strong><p>Повторить данные гостю, проговорить 15 минут и корректно завершить разговор.</p></div>
+  <div class="note">Ждёт подтверждения Тани или менеджера смены.</div><div id="done" class="ok">✓ Навык подтверждён.</div>
+  <div class="sp"></div><button class="cta light" onclick="go('manager')">Открыть вид менеджера</button>
 </section>
-
-<section id="manager" class="s">
-  <div class="row between"><div class="name">Таня</div><div class="muted">3 требуют внимания</div></div>
-
+<section id="manager" class="scr">
+  <div><div class="topline">Таня</div><div class="quiet">Требует внимания — 3</div></div>
   <div class="list">
-    <div class="item">
-      <div><strong>Саша · бар</strong><span style="display:block;margin-top:3px;color:var(--accent)">Просрочено</span></div><span>2 дн.</span>
-    </div>
-    <div class="item">
-      <div><strong>Маша · бронирования</strong><span style="display:block;margin-top:3px">Ждёт подтверждения</span><button id="sign" class="approve" onclick="signoff()">Подтвердить →</button></div><span></span>
-    </div>
-    <div class="item">
-      <div><strong>Илья · бронирования</strong><span style="display:block;margin-top:3px">Повторяет ошибку</span></div><span>2×</span>
-    </div>
+    <div class="item"><div class="s crit">Просрочено</div><h3>Саша · переаттестация бара</h3><div class="quiet">2 дня</div></div>
+    <div class="item"><div class="s">Ждёт sign-off</div><h3>Маша · Бронирования</h3><div class="quiet">Теория пройдена · практика выполнена</div><button id="sign" class="approve" onclick="signoff()">Подтвердить навык →</button></div>
+    <div class="item"><div class="s">Повторяющаяся ошибка</div><h3>Илья · Бронирования</h3><div class="quiet">2 ошибки в теме исключений</div></div>
   </div>
-
-  <div class="sp"></div>
-  <button class="cta light" onclick="go('practice')">Назад</button>
+  <div class="sp"></div><button class="cta light" onclick="go('practice')">Вернуться</button>
 </section>
-
 </main>
 <script>
-const screens=[...document.querySelectorAll('.s')];
+const screens=[...document.querySelectorAll('.scr')];
 function go(id){screens.forEach(s=>s.classList.toggle('on',s.id===id));scrollTo(0,0)}
-function quiz(){
- go('quiz');
- const a=['Держать стол 30 минут.','Снять бронь сразу.','Напомнить про 15 минут и уточнить у менеджера.','Просто ждать.'];
- const o=document.getElementById('opts');o.innerHTML='';
- a.forEach((t,i)=>{const b=document.createElement('button');b.className='opt';b.innerHTML='<span class="l">'+String.fromCharCode(65+i)+'</span><span>'+t+'</span>';b.onclick=()=>answer(i,b);o.appendChild(b)})
-}
-function answer(i,b){document.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('sel');const f=document.getElementById('fb');f.className='fb show '+(i===2?'good':'bad');f.textContent=i===2?'Верно.':'Нет. Стандарт — 15 минут, исключение подтверждает менеджер.';document.getElementById('next').style.display='block'}
-function signoff(){document.getElementById('sign').textContent='✓ Подтверждено';document.getElementById('sign').disabled=true;document.getElementById('ok').classList.add('show')}
+function startQuiz(){go('quiz');const a=['Пообещать держать стол 30 минут.','Сразу снять бронь.','Напомнить про 15 минут и уточнить у менеджера, можно ли сохранить стол дольше.','Ничего не уточнять.'];const o=document.getElementById('opts');o.innerHTML='';a.forEach((t,i)=>{const b=document.createElement('button');b.className='opt';b.innerHTML='<span class="l">'+String.fromCharCode(65+i)+'</span><span>'+t+'</span>';b.onclick=()=>answer(i,b);o.appendChild(b)})}
+function answer(i,b){document.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('sel');const f=document.getElementById('feed');f.className='feedback show '+(i===2?'good':'bad');f.textContent=i===2?'Верно. 15 минут — стандарт, исключение подтверждает менеджер.':'Не совсем. 15 минут — стандарт, исключение подтверждает менеджер.';document.getElementById('next').style.display='block'}
+function signoff(){document.getElementById('sign').textContent='✓ Подтверждено';document.getElementById('sign').disabled=true;document.getElementById('done').classList.add('show')}
 </script>
 </body>
 </html>
