@@ -5,230 +5,185 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#F4F0E8">
-<title>John Doe Academy — Quiet Preview</title>
+<title>John Doe Academy — Minimal v4</title>
 <style>
-:root{
- --paper:#F4F0E8;--raised:#FAF7F1;--ink:#201D19;--muted:#736D65;--line:#D8D1C7;
- --accent:#B95536;--wash:#EAD8CF;--moss:#55664D;--mosswash:#E1E7DD;--warn:#8B6547;--warnwash:#EEE3D6;
-}
+:root{--bg:#F4F0E8;--ink:#201D19;--muted:#746E67;--line:#D8D1C7;--accent:#B95536;--ok:#55664D}
 *{box-sizing:border-box}
 html,body{margin:0;background:#24211D;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif}
 button{font:inherit;color:inherit}
-.app{width:min(100%,430px);min-height:100svh;margin:auto;background:var(--paper);overflow:hidden}
-.scr{display:none;min-height:100svh;padding:26px 22px 22px;flex-direction:column;gap:20px}
-.scr.on{display:flex}
+.app{width:min(100%,430px);min-height:100svh;margin:auto;background:var(--bg)}
+.s{display:none;min-height:100svh;padding:24px 22px 22px;flex-direction:column;gap:22px}
+.s.on{display:flex}
 .row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.sp{flex:1}
-.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:650}
-.wordmark{font-size:13px;letter-spacing:.035em;font-weight:650}
-.sep{height:1px;background:var(--line);width:100%}
 h1,h2,h3,p{margin:0}
-h1{font-family:Georgia,"Times New Roman",serif;font-size:42px;line-height:1.03;font-weight:400;letter-spacing:-.035em}
-h2{font-family:Georgia,"Times New Roman",serif;font-size:32px;line-height:1.06;font-weight:400;letter-spacing:-.03em}
-h3{font-size:16px;line-height:1.25;font-weight:650}
-.lead{font-size:16px;line-height:1.5;color:var(--muted)}
-.small{font-size:12px;line-height:1.45;color:var(--muted)}
-.meta{font-size:11px;line-height:1.35;color:var(--muted)}
-.badge{display:inline-flex;align-self:flex-start;padding:5px 8px;border-radius:7px;border:1px solid var(--line);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.badge.accent{border-color:#D6B3A4;color:var(--accent);background:rgba(185,85,54,.04)}
-.badge.good{border-color:#BFCBBB;color:var(--moss);background:rgba(85,102,77,.05)}
-.panel{border:1px solid var(--line);border-radius:12px;background:rgba(250,247,241,.52);padding:16px}
-.panel.flat{background:transparent}
-.cta{border:0;border-radius:10px;min-height:52px;width:100%;padding:14px 16px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;cursor:pointer}
-.cta.accent{background:var(--accent)}.cta.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.text-link{border:0;background:none;padding:4px 0;text-align:left;font-size:13px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;color:var(--muted);cursor:pointer}
-.resume{position:relative;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:16px 0 18px}
-.resume:before{content:"";position:absolute;left:0;top:-1px;width:56px;height:2px;background:var(--accent)}
-.resume h3{font-family:Georgia,"Times New Roman",serif;font-size:26px;font-weight:400;line-height:1.12;margin:7px 0 9px}
-.progressline{height:2px;background:var(--line);overflow:hidden}.progressline i{display:block;height:100%;background:var(--accent)}
-.statline{display:flex;align-items:baseline;justify-content:space-between}
-.statline strong{font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:400}
-.note{border-left:2px solid var(--accent);padding:3px 0 3px 13px;font-size:13px;line-height:1.45}
-.nav{margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);padding-top:10px}
-.nav button{border:0;background:none;padding:6px 2px;color:var(--muted);font-size:10px;letter-spacing:.01em}
-.nav button b{display:block;height:10px;font-size:9px;font-weight:400;margin-bottom:4px}.nav button.active{color:var(--ink)}.nav button.active b{color:var(--accent)}
-.module{display:grid;grid-template-columns:25px 1fr auto;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:11px 0;cursor:pointer}
-.module:first-of-type{border-top:1px solid var(--line)}
-.module .num{font-family:Georgia,"Times New Roman",serif;color:var(--muted);font-size:14px}
-.module.done .num{color:var(--moss)}.module.current .num{color:var(--accent)}
-.module .copy strong{font-size:14px;font-weight:600}.module .copy span{display:block;margin-top:2px;font-size:11px;color:var(--muted)}
-.module.current .copy span{color:var(--accent)}
-.chev{color:var(--muted);font-size:17px}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.03em}
+h1{font-size:36px;line-height:1.04}
+h2{font-size:30px;line-height:1.08}
+.name{font-size:14px;font-weight:600}.muted{font-size:13px;line-height:1.45;color:var(--muted)}
+.line{height:1px;background:var(--line)}
+.cta{width:100%;min-height:52px;border:0;border-radius:9px;background:var(--ink);color:white;font-size:15px;font-weight:600;padding:14px 16px;cursor:pointer}
+.cta.light{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.link{border:0;background:none;padding:0;color:var(--accent);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.progress{height:2px;background:var(--line)}.progress i{display:block;height:100%;background:var(--accent)}
+.next{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.next h2{font-size:25px;margin:4px 0 8px}
+.list{border-top:1px solid var(--ink)}
+.item{padding:15px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.item strong{font-size:15px;font-weight:600}.item span{font-size:12px;color:var(--muted)}
+.item.done strong{color:var(--ok)}.item.current span{color:var(--accent)}
 .back{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer}
-.lessonrule{padding:16px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
-.lessonrule strong{display:block;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:29px;line-height:1.08;margin:9px 0}
-.lessonrule p{font-size:13px;line-height:1.5;color:var(--muted)}
-.script{border-left:2px solid var(--line);padding-left:13px;font-size:14px;line-height:1.55}
-.option{width:100%;display:grid;grid-template-columns:30px 1fr;align-items:center;gap:10px;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:13px 0;min-height:60px;cursor:pointer}
-.option:first-child{border-top:1px solid var(--line)}
-.option .letter{width:26px;height:26px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:11px}
-.option span:last-child{font-size:14px;line-height:1.4}
-.option.sel{color:var(--accent)}.option.sel .letter{border-color:var(--accent);background:var(--wash)}
-.feedback{display:none;padding:12px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.5}
-.feedback.show{display:block}.feedback.good{color:var(--moss)}.feedback.bad{color:var(--accent)}
-.successmark{width:42px;height:42px;border:1px solid #BFCBBB;border-radius:50%;display:grid;place-items:center;color:var(--moss);font-size:20px}
-.task{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:16px 0}
-.task strong{display:block;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:24px;line-height:1.15;margin:8px 0}
-.task p{font-size:13px;color:var(--muted);line-height:1.5}
-.donebadge{display:none;border-left:2px solid var(--moss);padding:5px 0 5px 12px;color:var(--moss);font-size:13px}.donebadge.show{display:block}
-.manager-list{border-top:1px solid var(--ink)}
-.manager-row{padding:14px 0;border-bottom:1px solid var(--line)}
-.manager-row .title{font-size:15px;font-weight:600;margin:4px 0}
-.manager-row .status{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.manager-row.critical .status{color:var(--accent)}
-.sign{margin-top:10px;border:0;background:none;padding:0;color:var(--moss);font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-@media(min-width:700px){body{padding:24px 0}.app{height:844px;min-height:844px}.scr{height:844px;min-height:844px}}
+.rule{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.rule strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:400;line-height:1.08}
+.rule p{font-size:14px;color:var(--muted);line-height:1.45;margin-top:8px}
+.script{font-size:14px;line-height:1.55}
+.opt{width:100%;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;border:0;border-bottom:1px solid var(--line);background:none;padding:14px 0;text-align:left;cursor:pointer}
+.opt:first-child{border-top:1px solid var(--line)}
+.opt .l{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:11px;color:var(--muted)}
+.opt span:last-child{font-size:14px;line-height:1.42}
+.opt.sel{color:var(--accent)}.opt.sel .l{border-color:var(--accent);color:var(--accent)}
+.fb{display:none;font-size:13px;line-height:1.5;padding-top:12px}.fb.show{display:block}.fb.good{color:var(--ok)}.fb.bad{color:var(--accent)}
+.mark{font-size:22px;color:var(--ok)}
+.task{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.task h2{font-size:25px}.task p{font-size:14px;color:var(--muted);line-height:1.45;margin-top:8px}
+.ok{display:none;color:var(--ok);font-size:13px}.ok.show{display:block}
+.approve{border:0;background:none;padding:0;color:var(--ok);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media(min-width:700px){body{padding:24px 0}.app{min-height:844px}.s{min-height:844px;height:844px}}
 </style>
 </head>
 <body>
 <main class="app">
 
-<section id="login" class="scr on">
- <div class="row between"><div class="wordmark">John Doe Academy</div><div class="kicker">internal</div></div>
- <div class="sep"></div>
- <div class="sp" style="flex:.35"></div>
- <div>
-  <div class="kicker" style="margin-bottom:12px">Обучение команды</div>
-  <h1>Знать стандарт.<br>Чувствовать ситуацию.</h1>
-  <p class="lead" style="margin-top:18px;max-width:330px">Короткие модули из реальной работы John Doe — без корпоративного шума.</p>
- </div>
- <div class="sp"></div>
- <div class="resume">
-   <div class="kicker">Следующий модуль · 4 минуты</div>
-   <h3>Бронирования и опоздавшие гости</h3>
-   <p class="small">Зал / сервис · 3 вопроса после урока</p>
- </div>
- <button class="cta" onclick="go('today')">Продолжить как Маша</button>
- <p class="meta" style="text-align:center">Демо · без реальных данных сотрудников</p>
+<section id="home" class="s on">
+  <div class="row between">
+    <div class="name">Маша</div>
+    <div class="muted">John Doe Academy</div>
+  </div>
+
+  <div class="sp" style="flex:.15"></div>
+
+  <div class="next">
+    <div class="muted">Продолжить</div>
+    <h2>Бронирования и опоздавшие гости</h2>
+    <button class="link" onclick="go('lesson')">Открыть →</button>
+  </div>
+
+  <div>
+    <div class="row between"><span class="muted">Прогресс</span><span class="muted">74%</span></div>
+    <div class="progress" style="margin-top:8px"><i style="width:74%"></i></div>
+  </div>
+
+  <div class="sp"></div>
+  <button class="cta light" onclick="go('path')">Все модули</button>
 </section>
 
-<section id="today" class="scr">
- <div class="row between">
-  <div><div class="kicker">Сегодня</div><h3 style="font-size:18px;margin-top:4px">Добрый вечер, Маша</h3></div>
-  <div class="meta" style="text-align:right">Официант<br><span style="color:var(--moss)">допуск действует</span></div>
- </div>
- <div class="resume">
-   <div class="kicker">Продолжить · 4 минуты</div>
-   <h3>Бронирования и опоздавшие гости</h3>
-   <p class="small">15 минут ожидания · праздничные ограничения</p>
-   <button class="text-link" onclick="go('lesson')" style="margin-top:12px;color:var(--accent)">Открыть модуль →</button>
- </div>
- <div>
-  <div class="statline"><span class="small">Путь · Зал / сервис</span><strong>74%</strong></div>
-  <div class="progressline" style="margin-top:9px"><i style="width:74%"></i></div>
- </div>
- <div class="note"><span class="kicker" style="display:block;margin-bottom:5px">Изменение стандарта</span>В праздничные дни время стола — 1,5–2 часа.</div>
- <div class="sp"></div>
- <nav class="nav">
-  <button class="active"><b>●</b>Сегодня</button>
-  <button onclick="go('path')"><b>○</b>Путь</button>
-  <button><b>○</b>Справочная</button>
-  <button><b>○</b>Профиль</button>
- </nav>
+<section id="path" class="s">
+  <div class="row"><button class="back" onclick="go('home')">←</button><div class="name">Модули</div></div>
+
+  <div class="list">
+    <div class="item done"><div><strong>Открытие зала</strong></div><span>✓</span></div>
+    <div class="item done"><div><strong>Шаги сервиса</strong></div><span>✓</span></div>
+    <div class="item done"><div><strong>Меню</strong></div><span>✓</span></div>
+    <div class="item current" onclick="go('lesson')"><div><strong>Бронирования</strong></div><span>→</span></div>
+    <div class="item"><div><strong>Жалобы гостя</strong></div><span>→</span></div>
+    <div class="item"><div><strong>Закрытие зала</strong></div><span>→</span></div>
+  </div>
 </section>
 
-<section id="path" class="scr">
- <div class="row"><button class="back" onclick="go('today')">←</button><div><div class="kicker">Зал / сервис</div><h3 style="font-size:18px;margin-top:4px">Мой путь</h3></div></div>
- <div class="statline"><span class="small">До финальной аттестации</span><strong>2 + практика</strong></div>
- <div>
-  <div class="module done"><div class="num">01</div><div class="copy"><strong>Открытие зала</strong><span>пройдено</span></div><div class="chev">✓</div></div>
-  <div class="module done"><div class="num">02</div><div class="copy"><strong>Шаги сервиса</strong><span>пройдено</span></div><div class="chev">✓</div></div>
-  <div class="module done"><div class="num">03</div><div class="copy"><strong>Меню: основы</strong><span>8/10 · пройдено</span></div><div class="chev">✓</div></div>
-  <div class="module current" onclick="go('lesson')"><div class="num">04</div><div class="copy"><strong>Бронирования</strong><span>4 мин · сегодня</span></div><div class="chev">→</div></div>
-  <div class="module"><div class="num">05</div><div class="copy"><strong>Жалобы гостя</strong><span>5 мин</span></div><div class="chev">→</div></div>
-  <div class="module"><div class="num">06</div><div class="copy"><strong>Закрытие зала</strong><span>практика + sign-off</span></div><div class="chev">→</div></div>
- </div>
- <div class="sp"></div>
- <nav class="nav">
-  <button onclick="go('today')"><b>○</b>Сегодня</button>
-  <button class="active"><b>●</b>Путь</button>
-  <button><b>○</b>Справочная</button>
-  <button><b>○</b>Профиль</button>
- </nav>
+<section id="lesson" class="s">
+  <div class="row"><button class="back" onclick="go('home')">←</button><div class="name">Бронирования</div></div>
+
+  <div class="sp" style="flex:.1"></div>
+
+  <div>
+    <h1>Гость опаздывает</h1>
+    <p class="muted" style="margin-top:14px">Если задерживается — просим предупредить.</p>
+  </div>
+
+  <div class="rule">
+    <strong>Бронь держим 15 минут.</strong>
+    <p>Исключение подтверждает менеджер.</p>
+  </div>
+
+  <div class="script">«Если будете задерживаться — пожалуйста, предупредите. Бронь держим 15 минут.»</div>
+
+  <div class="sp"></div>
+  <button class="cta" onclick="quiz()">Проверить себя</button>
 </section>
 
-<section id="lesson" class="scr">
- <div class="row"><button class="back" onclick="go('today')">←</button><div><div class="kicker">Бронирования</div><div class="meta" style="margin-top:3px">урок 1 из 2</div></div></div>
- <div class="progressline"><i style="width:50%"></i></div>
- <div class="sp" style="flex:.15"></div>
- <div><div class="kicker" style="margin-bottom:10px">Реальная ситуация</div><h2>Гость опаздывает</h2><p class="lead" style="margin-top:13px">Если планы изменились или гость задерживается, просим предупредить.</p></div>
- <div class="lessonrule">
-  <div class="kicker">Главное правило</div>
-  <strong>Обычную бронь держим 15 минут.</strong>
-  <p>Если гостю нужно исключение — его подтверждает менеджер.</p>
- </div>
- <div class="script"><span class="kicker" style="display:block;margin-bottom:6px">Что сказать</span>«Если планы поменяются или будете задерживаться — пожалуйста, предупредите. Бронь держим 15 минут.»</div>
- <div class="sp"></div>
- <button class="cta" onclick="startQuiz()">Проверить себя</button>
+<section id="quiz" class="s">
+  <div class="row"><button class="back" onclick="go('lesson')">←</button><div class="name">1 / 3</div></div>
+  <div class="progress"><i style="width:33%"></i></div>
+
+  <h2>Гость задержится на 20 минут. Что сделать?</h2>
+
+  <div id="opts"></div>
+  <div id="fb" class="fb"></div>
+
+  <div class="sp"></div>
+  <button id="next" class="cta" style="display:none" onclick="go('result')">Дальше</button>
 </section>
 
-<section id="quiz" class="scr">
- <div class="row"><button class="back" onclick="go('lesson')">←</button><div><div class="kicker">Бронирования</div><div class="meta">вопрос 1 из 3</div></div></div>
- <div class="progressline"><i style="width:33%"></i></div>
- <div><div class="kicker" style="margin-bottom:10px">Ситуация</div><h2 style="font-size:29px">Гость задержится на 20 минут. Что сделать?</h2></div>
- <div id="opts"></div>
- <div id="feed" class="feedback"></div>
- <div class="sp"></div>
- <button id="next" class="cta" style="display:none" onclick="go('result')">Показать результат</button>
- <p class="meta">Не обещай исключение от себя.</p>
+<section id="result" class="s">
+  <div class="mark">✓</div>
+  <div class="sp" style="flex:.18"></div>
+
+  <div>
+    <h1>Верно.</h1>
+    <p class="muted" style="margin-top:14px">Исключение от стандарта подтверждает менеджер.</p>
+  </div>
+
+  <div class="sp"></div>
+  <button class="cta" onclick="go('practice')">К практике</button>
 </section>
 
-<section id="result" class="scr">
- <div class="successmark">✓</div>
- <div class="sp" style="flex:.15"></div>
- <div><div class="kicker" style="color:var(--moss);margin-bottom:10px">Модуль пройден</div><h2>Ты не пообещал лишнего.</h2><p class="lead" style="margin-top:14px">Правило подтверждаем, а нестандартные условия передаём менеджеру.</p></div>
- <div class="lessonrule"><div class="kicker">Почему это важно</div><p style="font-size:14px;color:var(--ink);margin-top:8px">Так команда не создаёт разные правила в зависимости от того, кто взял трубку.</p></div>
- <div class="sp"></div>
- <button class="cta" onclick="go('practice')">Перейти к практике</button>
+<section id="practice" class="s">
+  <div class="name">Практика</div>
+
+  <div class="sp" style="flex:.1"></div>
+
+  <div class="task">
+    <h2>Принять бронь по телефону.</h2>
+    <p>Повторить данные гостю и проговорить правило 15 минут.</p>
+  </div>
+
+  <div class="muted">Ждёт подтверждения менеджера.</div>
+  <div id="ok" class="ok">✓ Подтверждено.</div>
+
+  <div class="sp"></div>
+  <button class="cta light" onclick="go('manager')">Вид менеджера</button>
 </section>
 
-<section id="practice" class="scr">
- <div class="kicker">После теории</div>
- <h2>Практика на реальной смене</h2>
- <p class="lead">Допуск появляется после того, как менеджер увидит навык в работе.</p>
- <div class="task">
-  <div class="kicker">Практическая задача</div>
-  <strong>Принять реальную бронь по телефону по стандарту.</strong>
-  <p>Повторить данные гостю, проговорить 15 минут и корректно завершить разговор.</p>
- </div>
- <div class="note" style="border-color:var(--warn)"><span class="kicker" style="display:block;margin-bottom:5px">Статус</span>Ждёт подтверждения Тани или менеджера смены.</div>
- <div id="done" class="donebadge">✓ Навык подтверждён. Допуск обновлён.</div>
- <div class="sp"></div>
- <button class="cta ghost" onclick="go('manager')">Открыть вид менеджера</button>
-</section>
+<section id="manager" class="s">
+  <div class="row between"><div class="name">Таня</div><div class="muted">3 требуют внимания</div></div>
 
-<section id="manager" class="scr">
- <div><div class="kicker">Управление обучением</div><h3 style="font-size:20px;margin-top:4px">Добрый вечер, Таня</h3></div>
- <div class="statline"><span class="small">Требует внимания</span><strong>3</strong></div>
- <div class="manager-list">
-  <div class="manager-row critical"><div class="status">Просрочено</div><div class="title">Саша · переаттестация бара</div><div class="meta">2 дня</div></div>
-  <div class="manager-row"><div class="status">Ждёт sign-off</div><div class="title">Маша · Бронирования</div><div class="meta">Теория пройдена · практика выполнена</div><button id="sign" class="sign" onclick="signoff()">Подтвердить навык →</button></div>
-  <div class="manager-row"><div class="status">Повторяющаяся ошибка</div><div class="title">Илья · Бронирования</div><div class="meta">2 ошибки в теме исключений</div></div>
- </div>
- <div class="panel flat">
-  <div class="kicker">Команда</div>
-  <div class="statline" style="margin-top:9px"><strong>8</strong><span class="small">допущено · 1 обучается · 1 просрочено</span></div>
- </div>
- <div class="sp"></div>
- <button class="cta ghost" onclick="go('practice')">Вернуться к сотруднику</button>
+  <div class="list">
+    <div class="item">
+      <div><strong>Саша · бар</strong><span style="display:block;margin-top:3px;color:var(--accent)">Просрочено</span></div><span>2 дн.</span>
+    </div>
+    <div class="item">
+      <div><strong>Маша · бронирования</strong><span style="display:block;margin-top:3px">Ждёт подтверждения</span><button id="sign" class="approve" onclick="signoff()">Подтвердить →</button></div><span></span>
+    </div>
+    <div class="item">
+      <div><strong>Илья · бронирования</strong><span style="display:block;margin-top:3px">Повторяет ошибку</span></div><span>2×</span>
+    </div>
+  </div>
+
+  <div class="sp"></div>
+  <button class="cta light" onclick="go('practice')">Назад</button>
 </section>
 
 </main>
 <script>
-const screens=[...document.querySelectorAll('.scr')];
+const screens=[...document.querySelectorAll('.s')];
 function go(id){screens.forEach(s=>s.classList.toggle('on',s.id===id));scrollTo(0,0)}
-function startQuiz(){
+function quiz(){
  go('quiz');
- const a=['Пообещать держать стол 30 минут.','Сразу снять бронь.','Напомнить про 15 минут и уточнить у менеджера, можно ли сохранить стол дольше.','Ничего не уточнять.'];
+ const a=['Держать стол 30 минут.','Снять бронь сразу.','Напомнить про 15 минут и уточнить у менеджера.','Просто ждать.'];
  const o=document.getElementById('opts');o.innerHTML='';
- a.forEach((t,i)=>{const b=document.createElement('button');b.className='option';b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+t+'</span>';b.onclick=()=>answer(i,b);o.appendChild(b)})
+ a.forEach((t,i)=>{const b=document.createElement('button');b.className='opt';b.innerHTML='<span class="l">'+String.fromCharCode(65+i)+'</span><span>'+t+'</span>';b.onclick=()=>answer(i,b);o.appendChild(b)})
 }
-function answer(i,b){
- document.querySelectorAll('.option').forEach(x=>x.disabled=true);b.classList.add('sel');
- const f=document.getElementById('feed');f.className='feedback show '+(i===2?'good':'bad');
- f.textContent=i===2?'Верно. Обычную бронь держим 15 минут, а исключение подтверждает менеджер.':'Не совсем. Обычную бронь держим 15 минут, а исключение подтверждает менеджер.';
- document.getElementById('next').style.display='block'
-}
-function signoff(){document.getElementById('sign').textContent='✓ Подтверждено';document.getElementById('sign').disabled=true;document.getElementById('done').classList.add('show')}
+function answer(i,b){document.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('sel');const f=document.getElementById('fb');f.className='fb show '+(i===2?'good':'bad');f.textContent=i===2?'Верно.':'Нет. Стандарт — 15 минут, исключение подтверждает менеджер.';document.getElementById('next').style.display='block'}
+function signoff(){document.getElementById('sign').textContent='✓ Подтверждено';document.getElementById('sign').disabled=true;document.getElementById('ok').classList.add('show')}
 </script>
 </body>
 </html>
