@@ -5,342 +5,445 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#F5E39A">
-<title>John Doe Academy — v5</title>
+<title>John Doe Academy — полный курс</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --page:#F5E39A;
-  --canvas:#FBFBFA;
-  --ink:#1D1C21;
-  --muted:#706D76;
-  --line:#E8E5EA;
-  --soft:#F5F3F6;
-  --orange:#FF7A2E;
-  --orange-soft:#FFE9DB;
-  --lav:#C7A6FF;
-  --lav-soft:#EEE2FF;
-  --green:#5D8A50;
-  --green-soft:#E3F0DE;
-  --shadow:0 22px 70px rgba(77,58,15,.10);
+ --page:#F5E39A;--canvas:#FBFBFA;--ink:#1D1C21;--muted:#716D77;--line:#E8E5EA;
+ --orange:#FF7A2E;--orangeSoft:#FFE7D8;--lav:#C7A6FF;--lavSoft:#EEE2FF;
+ --green:#5D8A50;--greenSoft:#E3F0DE;--red:#BA5A28;--redSoft:#FFF0E6;
+ --shadow:0 22px 70px rgba(77,58,15,.10)
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--page);color:var(--ink);font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button{font:inherit;color:inherit;cursor:pointer}
-body{min-height:100vh}
-.shell{padding:36px 16px}
-.app{width:min(1120px,100%);margin:0 auto;background:var(--canvas);border-radius:30px;box-shadow:var(--shadow);overflow:hidden}
-.screen{display:none;min-height:720px;padding:28px}
-.screen.active{display:block}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:36px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:14px}
-.logo{width:38px;height:38px;border-radius:14px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-weight:800;position:relative}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.shell{padding:28px 14px}.app{width:min(1120px,100%);margin:0 auto;background:var(--canvas);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;min-height:760px}
+.screen{display:none;padding:26px 28px 32px;min-height:760px}.screen.active{display:block}
+.topbar,.header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:26px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700}.logo{width:38px;height:38px;border-radius:14px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-weight:800;position:relative}
 .logo:after{content:"✦";position:absolute;right:-7px;top:-8px;color:var(--orange);font-size:13px}
-.top-actions{display:flex;align-items:center;gap:9px}
-.pill{height:40px;padding:0 14px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;gap:8px;font-size:12px}
-.avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--lav),var(--orange));color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
-.hero h1{font-size:clamp(48px,6.2vw,76px);line-height:.98;letter-spacing:-.055em;font-weight:500;margin:0;max-width:650px}
-.hero h1 .accent{color:var(--lav)}
-.hero h1 .underline{position:relative;display:inline-block}
-.hero h1 .underline:after{content:"";position:absolute;left:6%;right:-2%;bottom:-8px;border-top:5px solid var(--orange);border-radius:50%;transform:rotate(-2deg)}
-.hero p{font-size:18px;line-height:1.52;color:var(--muted);max-width:520px;margin:24px 0 0}
-.cta{height:56px;border:0;border-radius:999px;background:var(--orange);color:#fff;padding:0 22px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:12px}
-.cta .circle{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:18px}
-.ghost{height:52px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:0 18px;font-weight:600}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.illustration{min-height:420px;border-radius:30px;background:linear-gradient(145deg,#FFE6D4,#F8D9C1 42%,#E9DDFC);position:relative;overflow:hidden}
-.blob{position:absolute;border-radius:50%;opacity:.75}
-.blob.one{width:170px;height:170px;background:#F8D978;right:-40px;top:22px}
-.blob.two{width:150px;height:150px;background:var(--lav);left:-55px;bottom:24px;opacity:.33}
-.staff{position:absolute;left:11%;right:11%;top:15%;bottom:12%;display:flex;align-items:flex-end;justify-content:center;gap:18px}
-.person{width:34%;height:68%;border-radius:60px 60px 28px 28px;background:#2B292B;position:relative}
-.person:before{content:"";position:absolute;width:68%;aspect-ratio:1;border-radius:50%;background:#EEC4A4;left:16%;top:-34%}
-.person:after{content:"JD";position:absolute;left:50%;top:42%;transform:translateX(-50%);color:#F7A460;font-weight:700;font-size:22px}
-.person.two{height:74%}
-.tablet{position:absolute;width:32%;height:20%;left:34%;bottom:8%;border-radius:18px;background:#272A30;box-shadow:0 10px 26px rgba(0,0,0,.18)}
-.illustration-note{position:absolute;left:22px;right:22px;bottom:20px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:22px;padding:14px 16px;font-size:14px;line-height:1.4}
-.current{margin-top:28px;border-radius:26px;background:#fff7f1;padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
-.current small{display:block;color:#7A5E93;font-size:11px;margin-bottom:5px}
-.current h3{margin:0;font-size:22px;letter-spacing:-.025em}
-.current p{margin:5px 0 0;color:var(--muted);font-size:13px}
-.current button{border:0;background:#fff;border-radius:50%;width:46px;height:46px;font-size:20px}
-.header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:26px}
-.header-left{display:flex;align-items:center;gap:10px}
-.back{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff}
-.header-title{font-weight:700}
-.header-sub{font-size:12px;color:var(--muted);margin-top:2px}
-.mini-pill{height:36px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;font-size:12px;color:var(--muted)}
-.main-panel{background:#fff;border-radius:28px;padding:24px;border:1px solid #EFECEF}
-.main-panel h2{font-size:36px;line-height:1.05;letter-spacing:-.045em;margin:0;font-weight:600}
-.main-panel p{font-size:15px;line-height:1.45;color:var(--muted);margin:10px 0 0}
-.today-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-.progress-panel{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
-.progress-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
-.progress-row strong{font-size:32px;letter-spacing:-.04em}
-.progress{height:9px;border-radius:999px;background:#EEEAF1;overflow:hidden;margin-top:14px}
-.progress i{display:block;height:100%;width:74%;background:linear-gradient(90deg,var(--lav),var(--orange));border-radius:inherit}
-.notice{margin-top:14px;border-radius:20px;background:#FFF8F0;padding:14px 16px;font-size:13px;line-height:1.45}
-.path-panel{background:#fff;border-radius:28px;border:1px solid #EFECEF;overflow:hidden}
-.path-row{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
-.path-row:last-child{border-bottom:0}
-.path-icon{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;font-weight:700}
-.path-row.done .path-icon{background:var(--green-soft);color:var(--green)}
-.path-row.current .path-icon{background:var(--lav-soft);color:#7D5BC2}
-.path-row.idle .path-icon{background:#F2F0F4;color:#908796}
-.path-row h3{margin:0;font-size:17px}
-.path-row p{margin:2px 0 0;color:var(--muted);font-size:12px}
-.lesson-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
-.lesson-side{display:grid;gap:18px}
-.rule{background:#FFF7F0;border-radius:26px;padding:22px}
-.rule strong{display:block;font-size:30px;line-height:1.08;letter-spacing:-.04em}
-.rule p{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.45}
-.script{background:linear-gradient(180deg,#F7F0FF,#fff);border-radius:26px;padding:22px;font-size:15px;line-height:1.55}
-.quiz-options{display:grid;gap:10px;margin-top:20px}
-.option{border:1px solid #EFECEF;background:#fff;border-radius:20px;padding:14px;display:grid;grid-template-columns:44px 1fr;gap:12px;text-align:left;align-items:center}
-.option .letter{width:44px;height:44px;border-radius:15px;background:#F3F0F7;color:#7754B6;display:grid;place-items:center;font-weight:700}
-.option.sel{outline:2px solid #E3D3FF;background:#FCFAFF}
-.option.sel .letter{background:var(--lav);color:#fff}
-.feedback{display:none;margin-top:14px;border-radius:18px;padding:13px 15px;font-size:14px}
-.feedback.show{display:block}
-.feedback.good{background:var(--green-soft);color:var(--green)}
-.feedback.bad{background:#FFF0E6;color:#B95A24}
-.result{display:grid;grid-template-columns:.75fr 1.25fr;gap:18px}
-.success{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
-.success-mark{width:72px;height:72px;border-radius:24px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:34px}
-.success h2{font-size:38px;letter-spacing:-.04em;margin:18px 0 8px}
-.success p,.why p{color:var(--muted);line-height:1.45}
-.why{background:#FFF8F0;border-radius:28px;padding:22px}
-.why h3{font-size:24px;margin:0 0 7px}
-.practice{display:grid;grid-template-columns:1fr .9fr;gap:18px}
-.task,.status{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
-.task h2{font-size:34px;letter-spacing:-.04em;margin:0}
-.task strong{display:block;font-size:23px;line-height:1.13;margin-top:18px}
-.task p,.status p{color:var(--muted);line-height:1.45}
-.status-top{display:flex;align-items:center;gap:12px}
-.status-icon{width:52px;height:52px;border-radius:17px;background:#F4D978;display:grid;place-items:center;font-size:24px}
-.done-note{display:none;background:var(--green-soft);color:var(--green);border-radius:17px;padding:12px 14px;margin-top:14px;font-size:13px}
-.done-note.show{display:block}
-.manager-list{background:#fff;border-radius:28px;border:1px solid #EFECEF;overflow:hidden}
-.manager-row{padding:18px;border-bottom:1px solid var(--line)}
-.manager-row:last-child{border-bottom:0}
-.tag{display:inline-flex;height:28px;align-items:center;padding:0 10px;border-radius:999px;background:#F3EFFA;color:#7655A9;font-size:11px}
-.tag.crit{background:#FFF0E6;color:#B95A24}
-.manager-row h3{margin:9px 0 4px;font-size:20px}
-.manager-row p{margin:0;color:var(--muted);font-size:13px}
-@media(max-width:860px){
-  .shell{padding:0}
-  .app{border-radius:0}
-  .screen{padding:18px;min-height:100svh}
-  .hero,.today-layout,.lesson-layout,.result,.practice{grid-template-columns:1fr}
-  .hero h1{font-size:48px}
-  .illustration{min-height:320px}
-}
-@media(max-width:560px){
-  .topbar{align-items:flex-start;flex-direction:column;margin-bottom:24px}
-  .top-actions{width:100%;justify-content:flex-start;flex-wrap:wrap}
-  .hero h1{font-size:43px}
-  .hero p{font-size:16px}
-  .current{grid-template-columns:1fr auto}
-  .main-panel h2{font-size:30px}
-  .path-row{grid-template-columns:40px 1fr auto}
-  .path-icon{width:40px;height:40px;border-radius:13px}
-}
+.avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--lav),var(--orange));color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}
+.pill{height:38px;padding:0 13px;border-radius:999px;background:#fff;border:1px solid var(--line);display:inline-flex;align-items:center;gap:8px;font-size:12px}
+.pill.orange{background:var(--orange);color:#fff;border-color:transparent}
+.hero{display:grid;grid-template-columns:1.04fr .96fr;gap:28px;align-items:center}
+.hero h1{font-size:clamp(47px,6vw,76px);line-height:.98;letter-spacing:-.055em;font-weight:500;margin:0}
+.hero h1 .lav{color:var(--lav)}.hero h1 .under{position:relative;display:inline-block}.hero h1 .under:after{content:"";position:absolute;left:5%;right:-3%;bottom:-8px;border-top:5px solid var(--orange);border-radius:50%;transform:rotate(-2deg)}
+.hero p{font-size:17px;line-height:1.5;color:var(--muted);max-width:530px;margin:22px 0 0}
+.hero-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:24px}
+.cta{height:54px;border:0;border-radius:999px;background:var(--orange);color:#fff;padding:0 22px;font-weight:700}
+.ghost{height:52px;border:1px solid var(--line);border-radius:999px;background:#fff;padding:0 18px;font-weight:600}
+.illustration{min-height:350px;border-radius:30px;background:linear-gradient(145deg,#FFE6D4,#F8DAC3 42%,#E8DDFC);position:relative;overflow:hidden}
+.illustration:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#F4DA79;right:-45px;top:20px;opacity:.78}
+.illustration:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:var(--lav);left:-55px;bottom:20px;opacity:.33}
+.staff{position:absolute;left:13%;right:13%;top:16%;bottom:10%;display:flex;align-items:flex-end;justify-content:center;gap:20px}
+.person{width:34%;height:69%;border-radius:58px 58px 28px 28px;background:#29272A;position:relative}.person.two{height:76%}
+.person:before{content:"";position:absolute;width:68%;aspect-ratio:1;border-radius:50%;background:#EEC4A5;left:16%;top:-34%}
+.person:after{content:"JD";position:absolute;left:50%;top:43%;transform:translateX(-50%);color:#F4A05B;font-size:21px;font-weight:700}
+.tablet{position:absolute;width:31%;height:20%;left:35%;bottom:7%;border-radius:18px;background:#292B31;box-shadow:0 10px 25px rgba(0,0,0,.18)}
+.current{margin-top:26px;background:#FFF7F1;border-radius:25px;padding:17px 19px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.current small{color:#755A8B}.current h3{margin:5px 0 4px;font-size:21px;letter-spacing:-.025em}.current p{margin:0;color:var(--muted);font-size:13px}.current button{width:46px;height:46px;border-radius:50%;border:0;background:#fff;font-size:20px}
+.role-tabs{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.role-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-size:13px}.role-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}.role-btn.locked{opacity:.6}
+.header-left{display:flex;align-items:center;gap:10px}.back{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff}.header-title{font-weight:700}.header-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.track-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:16px}.track-head h2{margin:0;font-size:32px;letter-spacing:-.04em}.track-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.progress-wrap{min-width:180px}.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:7px}.progress{height:9px;border-radius:999px;background:#EEEAF1;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--lav),var(--orange));border-radius:inherit}
+.module-list{background:#fff;border:1px solid #EFECEF;border-radius:26px;overflow:hidden}.module-row{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;padding:15px 18px;border-bottom:1px solid var(--line);cursor:pointer}.module-row:last-child{border-bottom:0}
+.module-num{width:48px;height:48px;border-radius:16px;background:#F2F0F4;color:#8E8597;display:grid;place-items:center;font-weight:700}.module-row.done .module-num{background:var(--greenSoft);color:var(--green)}.module-row.current .module-num{background:var(--lavSoft);color:#7958BA}.module-row.locked{opacity:.55;cursor:default}
+.module-row h3{margin:0 0 3px;font-size:16px}.module-row p{margin:0;color:var(--muted);font-size:12px}.arrow{font-size:21px;color:var(--muted)}
+.lesson-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.panel{background:#fff;border:1px solid #EFECEF;border-radius:28px;padding:22px}.panel h2{font-size:36px;line-height:1.05;letter-spacing:-.045em;margin:0}.panel .intro{font-size:15px;line-height:1.48;color:var(--muted);margin:10px 0 0}
+.bullets{display:grid;gap:9px;margin-top:18px}.bullet{display:grid;grid-template-columns:10px 1fr;gap:10px;font-size:14px;line-height:1.45}.bullet:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);margin-top:7px}
+.side{display:grid;gap:14px}.stop{background:var(--redSoft);border-radius:24px;padding:18px}.stop h3{margin:0 0 7px;color:var(--red)}.stop p,.stop li{font-size:13px;line-height:1.45;color:#6B4A3A}.practice-card{background:linear-gradient(180deg,#F7F0FF,#fff);border-radius:24px;padding:18px}.practice-card h3{margin:0 0 7px}.practice-card p{font-size:13px;line-height:1.45;color:var(--muted);margin:0}
+.lesson-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.menu-search{width:100%;height:46px;border-radius:999px;border:1px solid var(--line);background:#fff;padding:0 16px;outline:none}.menu-groups{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}.menu-group{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;font-size:12px}.menu-group.active{background:var(--lavSoft);border-color:#DEC8FF}
+.menu-items{display:grid;gap:9px}.dish{background:#fff;border:1px solid #EFECEF;border-radius:18px;padding:13px 15px}.dish summary{cursor:pointer;font-weight:600}.dish p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
+.quiz-card{background:#fff;border:1px solid #EFECEF;border-radius:28px;padding:22px}.quiz-card h2{font-size:32px;line-height:1.08;letter-spacing:-.04em;margin:0}.options{display:grid;gap:10px;margin-top:18px}.option{border:1px solid #EFECEF;background:#fff;border-radius:20px;padding:14px;display:grid;grid-template-columns:44px 1fr;gap:12px;text-align:left;align-items:center}.option .letter{width:44px;height:44px;border-radius:15px;background:#F3F0F7;color:#7754B6;display:grid;place-items:center;font-weight:700}.option.selected{outline:2px solid #E3D3FF;background:#FCFAFF}.option.selected .letter{background:var(--lav);color:#fff}
+.feedback{display:none;margin-top:14px;border-radius:18px;padding:13px 15px;font-size:14px;line-height:1.45}.feedback.show{display:block}.feedback.good{background:var(--greenSoft);color:var(--green)}.feedback.bad{background:var(--redSoft);color:var(--red)}
+.exam-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.exam-meta span{font-size:12px;color:var(--muted)}
+.result-card{background:#fff;border:1px solid #EFECEF;border-radius:28px;padding:24px}.success-mark{width:74px;height:74px;border-radius:25px;background:var(--greenSoft);color:var(--green);display:grid;place-items:center;font-size:34px}.result-card h2{font-size:38px;margin:18px 0 8px;letter-spacing:-.04em}.result-card p{color:var(--muted);line-height:1.46}
+.cert-grid{display:grid;grid-template-columns:1fr .9fr;gap:18px}.task-card,.signoff-card{background:#fff;border:1px solid #EFECEF;border-radius:28px;padding:22px}.task-card h2{font-size:32px;margin:0 0 10px;letter-spacing:-.04em}.task-list{display:grid;gap:10px;margin-top:15px}.task-line{padding:12px 14px;border-radius:17px;background:#F8F6F9;font-size:13px}.signoff-head{display:flex;gap:12px;align-items:center}.signoff-icon{width:52px;height:52px;border-radius:17px;background:#F4D978;display:grid;place-items:center;font-size:23px}.done-note{display:none;background:var(--greenSoft);color:var(--green);border-radius:17px;padding:12px 14px;margin-top:14px;font-size:13px}.done-note.show{display:block}
+.locked-box{background:#FFF7F0;border-radius:24px;padding:18px;margin-top:14px;color:#6F5544}.locked-box strong{display:block;margin-bottom:5px}
+@media(max-width:860px){.shell{padding:0}.app{border-radius:0}.screen{padding:18px;min-height:100svh}.hero,.lesson-grid,.cert-grid{grid-template-columns:1fr}.hero h1{font-size:48px}.illustration{min-height:300px}}
+@media(max-width:560px){.topbar{flex-direction:column;align-items:flex-start}.hero h1{font-size:43px}.track-head{align-items:flex-start;flex-direction:column}.progress-wrap{width:100%}.module-row{grid-template-columns:42px 1fr auto}.module-num{width:42px;height:42px;border-radius:14px}.panel h2,.quiz-card h2{font-size:29px}}
 </style>
 </head>
 <body>
-<div class="shell">
-<main class="app">
+<div class="shell"><main class="app">
 
 <section id="home" class="screen active">
-  <div class="topbar">
-    <div class="brand"><div class="logo">JD</div><span>John Doe Academy</span></div>
-    <div class="top-actions">
-      <div class="pill">Прогресс <strong>74%</strong></div>
-      <div class="pill"><div class="avatar">М</div><span>Маша</span></div>
-    </div>
-  </div>
-
-  <div class="hero">
-    <div>
-      <h1>Учиться <span class="accent">легко</span>.<br>Работать <span class="underline">уверенно</span>.</h1>
-      <p>Короткие практичные модули для команды John Doe — без длинных инструкций и лишней бюрократии.</p>
-      <div class="hero-actions">
-        <button class="cta" onclick="show('today')"><span class="circle">→</span>Открыть Academy</button>
-        <button class="ghost" onclick="show('path')">Мой путь</button>
-      </div>
-    </div>
-
-    <div class="illustration">
-      <div class="blob one"></div>
-      <div class="blob two"></div>
-      <div class="staff">
-        <div class="person"></div>
-        <div class="person two"></div>
-        <div class="tablet"></div>
-      </div>
-      <div class="illustration-note">Обучение прямо в рабочем контексте: коротко, понятно и по реальным ситуациям смены.</div>
-    </div>
-  </div>
-
-  <div class="current">
-    <div>
-      <small>Следующий модуль · 4 минуты</small>
-      <h3>Бронирования и опоздавшие гости</h3>
-      <p>Правило 15 минут и нестандартные просьбы гостей.</p>
-    </div>
-    <button onclick="show('lesson')">→</button>
-  </div>
+ <div class="topbar">
+   <div class="brand"><div class="logo">JD</div><span>John Doe Academy</span></div>
+   <div class="pill"><div class="avatar">М</div><span>Маша · официант</span></div>
+ </div>
+ <div class="hero">
+   <div>
+     <h1>Учиться <span class="lav">легко</span>.<br>Работать <span class="under">уверенно</span>.</h1>
+     <p>Полное обучение по текущим стандартам John Doe: короткие уроки, тесты, практика и переаттестации.</p>
+     <div class="hero-actions">
+       <button class="cta" onclick="openTrack('hall')">Начать обучение</button>
+       <button class="ghost" onclick="openTrack('bar')">Посмотреть роли</button>
+     </div>
+     <div class="role-tabs">
+       <button class="role-btn active" onclick="setHomeRole('hall',this)">🍽️ Зал</button>
+       <button class="role-btn" onclick="setHomeRole('bar',this)">🍸 Бар</button>
+       <button class="role-btn" onclick="setHomeRole('manager',this)">👩‍💼 Менеджер</button>
+       <button class="role-btn locked" onclick="setHomeRole('kitchen',this)">🍳 Кухня · частично</button>
+     </div>
+   </div>
+   <div class="illustration">
+     <div class="staff"><div class="person"></div><div class="person two"></div><div class="tablet"></div></div>
+   </div>
+ </div>
+ <div class="current">
+   <div><small id="homeRoleMeta">Зал / сервис · 15 модулей</small><h3 id="homeRoleTitle">Внимание к гостю</h3><p id="homeRoleCopy">Начинаем с базового: видеть гостя и не терять зал.</p></div>
+   <button id="homeContinue" onclick="openTrack('hall')">→</button>
+ </div>
 </section>
 
-<section id="today" class="screen">
-  <div class="header">
-    <div class="header-left"><button class="back" onclick="show('home')">←</button><div><div class="header-title">Маша</div><div class="header-sub">Официант · допуск действует</div></div></div>
-    <div class="mini-pill">Сегодня</div>
-  </div>
-  <div class="today-layout">
-    <div class="main-panel">
-      <div style="font-size:12px;color:var(--muted)">Продолжить · 4 минуты</div>
-      <h2 style="margin-top:7px">Бронирования и опоздавшие гости</h2>
-      <p>Стандартный звонок, 15 минут ожидания и нестандартные просьбы.</p>
-      <button class="cta" style="margin-top:18px" onclick="show('lesson')">Продолжить</button>
-    </div>
-    <div class="progress-panel">
-      <div class="progress-row"><div><div style="font-size:12px;color:var(--muted)">Путь</div><div style="font-weight:700">Зал / сервис</div></div><strong>74%</strong></div>
-      <div class="progress"><i></i></div>
-      <div class="notice">В праздничные дни время стола — <strong>1,5–2 часа</strong>.</div>
-    </div>
-  </div>
-</section>
-
-<section id="path" class="screen">
-  <div class="header">
-    <div class="header-left"><button class="back" onclick="show('today')">←</button><div><div class="header-title">Мой путь</div><div class="header-sub">Зал / сервис</div></div></div>
-    <div class="mini-pill">6 из 8</div>
-  </div>
-  <div class="path-panel">
-    <div class="path-row done"><div class="path-icon">✓</div><div><h3>Открытие зала</h3><p>Пройдено</p></div><div>›</div></div>
-    <div class="path-row done"><div class="path-icon">✓</div><div><h3>Шаги сервиса</h3><p>Пройдено</p></div><div>›</div></div>
-    <div class="path-row done"><div class="path-icon">✓</div><div><h3>Меню: основы</h3><p>Пройдено</p></div><div>›</div></div>
-    <div class="path-row current" onclick="show('lesson')"><div class="path-icon">04</div><div><h3>Бронирования</h3><p>Сейчас</p></div><div>→</div></div>
-    <div class="path-row idle"><div class="path-icon">05</div><div><h3>Жалобы гостя</h3><p>Далее</p></div><div>›</div></div>
-    <div class="path-row idle"><div class="path-icon">06</div><div><h3>Закрытие зала</h3><p>Практика</p></div><div>›</div></div>
-  </div>
+<section id="track" class="screen">
+ <div class="header">
+   <div class="header-left"><button class="back" onclick="show('home')">←</button><div><div class="header-title" id="trackTitle">Зал / сервис</div><div class="header-sub" id="trackSub"></div></div></div>
+   <div class="pill" id="trackCount"></div>
+ </div>
+ <div class="role-tabs" style="margin:0 0 20px">
+   <button class="role-btn" data-role="hall" onclick="openTrack('hall')">🍽️ Зал</button>
+   <button class="role-btn" data-role="bar" onclick="openTrack('bar')">🍸 Бар</button>
+   <button class="role-btn" data-role="manager" onclick="openTrack('manager')">👩‍💼 Менеджер</button>
+   <button class="role-btn" data-role="kitchen" onclick="openTrack('kitchen')">🍳 Кухня</button>
+ </div>
+ <div class="track-head">
+   <div><h2 id="trackHeading"></h2><p id="trackDescription"></p></div>
+   <div class="progress-wrap"><div class="progress-meta"><span>Прогресс</span><strong id="trackPercent">0%</strong></div><div class="progress"><i id="trackProgress" style="width:0%"></i></div></div>
+ </div>
+ <div id="moduleList" class="module-list"></div>
+ <div id="trackLock" class="locked-box" style="display:none"></div>
 </section>
 
 <section id="lesson" class="screen">
-  <div class="header">
-    <div class="header-left"><button class="back" onclick="show('today')">←</button><div><div class="header-title">Бронирования</div><div class="header-sub">Урок 1 из 2</div></div></div>
-    <div class="mini-pill">Ситуация</div>
-  </div>
-  <div class="lesson-layout">
-    <div class="main-panel">
-      <h2>Гость опаздывает</h2>
-      <p>Если планы изменились или гость задерживается, просим предупредить.</p>
-      <div class="rule"><strong>Обычную бронь держим 15 минут.</strong><p>Если нужно исключение — решение подтверждает менеджер.</p></div>
-    </div>
-    <div class="lesson-side">
-      <div class="script">«Если планы поменяются или будете задерживаться — пожалуйста, предупредите. Бронь держим 15 минут.»</div>
-      <button class="cta" onclick="startQuiz()">Проверить себя</button>
-    </div>
-  </div>
+ <div class="header">
+   <div class="header-left"><button class="back" onclick="backToTrack()">←</button><div><div class="header-title" id="lessonRole"></div><div class="header-sub" id="lessonMeta"></div></div></div>
+   <div class="pill" id="lessonTime"></div>
+ </div>
+ <div id="lessonBody"></div>
 </section>
 
 <section id="quiz" class="screen">
-  <div class="header">
-    <div class="header-left"><button class="back" onclick="show('lesson')">←</button><div><div class="header-title">Бронирования</div><div class="header-sub">Вопрос 1 из 3</div></div></div>
-    <div class="mini-pill">Тест</div>
-  </div>
-  <div class="main-panel">
-    <h2>Гость задержится на 20 минут. Что сделать?</h2>
-    <div id="options" class="quiz-options"></div>
-    <div id="feedback" class="feedback"></div>
-    <button id="quizNext" class="cta" style="margin-top:16px;display:none" onclick="show('result')">Дальше</button>
-  </div>
+ <div class="header">
+   <div class="header-left"><button class="back" onclick="returnToLesson()">←</button><div><div class="header-title" id="quizTitle"></div><div class="header-sub">Проверка модуля</div></div></div>
+ </div>
+ <div class="quiz-card">
+   <h2 id="questionText"></h2>
+   <div id="options" class="options"></div>
+   <div id="feedback" class="feedback"></div>
+   <button id="quizAction" class="cta" style="margin-top:16px;display:none"></button>
+ </div>
+</section>
+
+<section id="exam" class="screen">
+ <div class="header">
+   <div class="header-left"><button class="back" onclick="backToTrack()">←</button><div><div class="header-title">Финальная аттестация</div><div class="header-sub" id="examRole"></div></div></div>
+ </div>
+ <div class="quiz-card">
+   <div class="exam-meta"><span id="examCounter"></span><span id="examScore"></span></div>
+   <h2 id="examQuestion"></h2>
+   <div id="examOptions" class="options"></div>
+   <div id="examFeedback" class="feedback"></div>
+   <button id="examNext" class="cta" style="margin-top:16px;display:none"></button>
+ </div>
 </section>
 
 <section id="result" class="screen">
-  <div class="header">
-    <div class="header-left"><button class="back" onclick="show('quiz')">←</button><div class="header-title">Результат</div></div>
-  </div>
-  <div class="result">
-    <div class="success">
-      <div class="success-mark">✓</div>
-      <h2>Верно.</h2>
-      <p>Правило подтверждаем, а нестандартные условия передаём менеджеру.</p>
-      <button class="cta" onclick="show('practice')">К практике →</button>
-    </div>
-    <div class="why">
-      <h3>Почему это важно</h3>
-      <p>Так команда не создаёт разные правила, а гость получает честный и уверенный ответ.</p>
-    </div>
-  </div>
+ <div class="result-card">
+   <div class="success-mark">✓</div>
+   <h2 id="resultTitle">Модуль пройден</h2>
+   <p id="resultCopy"></p>
+   <button id="resultButton" class="cta" style="margin-top:18px">Вернуться к треку</button>
+ </div>
 </section>
 
-<section id="practice" class="screen">
-  <div class="header">
-    <div class="header-left"><button class="back" onclick="show('result')">←</button><div class="header-title">Практика</div></div>
-  </div>
-  <div class="practice">
-    <div class="task">
-      <h2>Проверить навык на смене</h2>
-      <p>После теории менеджер должен увидеть навык в реальной работе.</p>
-      <strong>Принять реальную бронь по телефону по стандарту.</strong>
-      <p>Повторить данные гостю, проговорить 15 минут и корректно завершить разговор.</p>
-      <button class="ghost" style="margin-top:18px" onclick="show('manager')">Открыть вид менеджера</button>
-    </div>
-    <div class="status">
-      <div class="status-top"><div class="status-icon">…</div><div><div style="font-size:19px;font-weight:700">Ждёт подтверждения</div><p>Таня или менеджер смены подтвердит навык.</p></div></div>
-      <div id="doneNote" class="done-note">✓ Навык подтверждён. Допуск обновлён.</div>
-    </div>
-  </div>
+<section id="cert" class="screen">
+ <div class="header">
+   <div class="header-left"><button class="back" onclick="backToTrack()">←</button><div><div class="header-title">Практический допуск</div><div class="header-sub" id="certRole"></div></div></div>
+ </div>
+ <div class="cert-grid">
+   <div class="task-card"><h2>Осталась практика</h2><p style="color:var(--muted);line-height:1.45">Теория пройдена. Теперь менеджер подтверждает навыки в реальной смене.</p><div id="certTasks" class="task-list"></div></div>
+   <div class="signoff-card">
+     <div class="signoff-head"><div class="signoff-icon">…</div><div><strong>Ждёт sign-off</strong><div style="font-size:12px;color:var(--muted);margin-top:3px">Таня / менеджер смены</div></div></div>
+     <button id="signoffBtn" class="cta" style="margin-top:18px" onclick="confirmCertification()">Подтвердить навыки</button>
+     <div id="certDone" class="done-note">✓ Роль подтверждена. Переаттестация будет назначена по графику Academy.</div>
+   </div>
+ </div>
 </section>
 
-<section id="manager" class="screen">
-  <div class="header">
-    <div class="header-left"><button class="back" onclick="show('practice')">←</button><div><div class="header-title">Таня · обучение</div><div class="header-sub">3 требуют внимания</div></div></div>
-  </div>
-  <div class="manager-list">
-    <div class="manager-row"><span class="tag crit">Просрочено</span><h3>Саша · переаттестация бара</h3><p>2 дня.</p></div>
-    <div class="manager-row"><span class="tag">Ждёт sign-off</span><h3>Маша · Бронирования</h3><p>Теория пройдена, практика выполнена.</p><button id="signoff" class="cta" style="margin-top:14px" onclick="confirmSkill()">Подтвердить навык</button></div>
-    <div class="manager-row"><span class="tag">Повторяющаяся ошибка</span><h3>Илья · Бронирования</h3><p>2 ошибки в теме исключений.</p></div>
-  </div>
-</section>
-
-</main>
-</div>
+</main></div>
 <script>
-const screens=[...document.querySelectorAll('.screen')];
-function show(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));window.scrollTo({top:0,behavior:'instant'})}
-function startQuiz(){
-  show('quiz');
-  const answers=['Пообещать держать стол 30 минут.','Сразу снять бронь.','Напомнить про 15 минут и уточнить у менеджера, можно ли сохранить стол дольше.','Ничего не уточнять.'];
-  const box=document.getElementById('options'); box.innerHTML='';
-  answers.forEach((text,i)=>{
-    const b=document.createElement('button');
-    b.className='option';
-    b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+text+'</span>';
-    b.onclick=()=>answer(i,b);
-    box.appendChild(b);
-  });
-  document.getElementById('feedback').className='feedback';
-  document.getElementById('quizNext').style.display='none';
+const menuCatalog={
+ "Закуски и салаты":[
+  "Битые огурцы — паназиатский маринад, лёгкая острота, кунжутное масло, кинза, мята.",
+  "Салат из овощей в маринаде кимчи бейс — красная капуста, морковь, такуан, соевый соус, сычуанский перец.",
+  "Маринованная тыква Ланчжоу — тыква в пряном масле, кунжутное масло.",
+  "Салат с тофу и языком — говяжий язык, тофу, ростки сои, огурец, луковое масло.",
+  "Хияши вакаме, чука, тофу — арахисовый соус подаётся отдельно.",
+  "Салат с креветками и авокадо — тигровые креветки, авокадо, черри, медово-горчичный соус с лаймом.",
+  "Салат с ростками сои, манго и курицей карри — ростки сои, манго, курица, эдамаме, карри, лемонграсс.",
+  "Салат с хрустящими баклажанами — баклажаны, томаты, сливочный сыр, сладкий чили, миндаль.",
+  "Тёплый салат с говядиной — говядина в устричном соусе, микс-салат, лемонграсс.",
+  "Паназиатский сет — битые огурцы, тофу, маринованная тыква, овощи кимчи бейс.",
+  "Салат с маринованным тунцом — тунец, микс-салат, лемонграсс.",
+  "Поке с лососем или курицей — рис/киноа, авокадо, эдамаме, такуан, дайкон, чука; арахисовый соус отдельно.",
+  "Тартар с авокадо и гребешком — авокадо, огурец, красный лук, гребешок, сливочный терияки."
+ ],
+ "Фреш-роллы":[
+  "С креветками — креветки, манго, перец, морковь, зелень, фунчоза.",
+  "С жасминовым тунцом — тунец, красная капуста, фунчоза, яблоко, огурец.",
+  "С чукой и тофу — чука, тофу, шиитаке, морковь, перец, фунчоза.",
+  "Овощной — перец, морковь, ростки сои, огурец, зелень.",
+  "Ко всем фреш-роллам подаются два соуса: лемонграсс + арахисовый."
+ ],
+ "Роллы / суши / гунканы":[
+  "Радуга — креветка, сливочный сыр, авокадо; сверху тунец, лосось и угорь.",
+  "Филадельфия — сливочный сыр, авокадо, огурец, лосось; подаётся с чукой.",
+  "Фуджияма — сливочный сыр, омлет, авокадо, огурец, копчёный угорь.",
+  "Ролл тунец — тунец и лосось, сливочный сыр, огурец, подушка гуакамоле.",
+  "Саке Юсен — запечённый ролл с угрём и форелью.",
+  "Спайси ролл — лосось, краб-крем, кальмар, спайси соус, масаго.",
+  "Унаги Дзу — угорь, краб-крем, шрирача, сырный соус.",
+  "Унаги Хот — сливочный сыр, омлет, авокадо, угорь, спайси.",
+  "Аляска Спешл — сырный соус, краб-крем, опалённая форель.",
+  "Фреш Унаги — рисовая бумага, угорь, сливочный сыр, салат.",
+  "Ролл с гребешком — гребешок, спайси краб, сырный соус, тобика.",
+  "Все роллы подаются с васаби, имбирём и салатом.",
+  "Острые гунканы: лосось / тунец / угорь / креветка — майонез + шрирача.",
+  "Запечённые гунканы: лосось / тунец / угорь / креветка — сырный соус.",
+  "Суши и сашими: лосось / тунец / угорь."
+ ],
+ "Супы":[
+  "Японский кимчи суп — острый, яйцо, копчёный тофу, шиитаке, вакаме.",
+  "Мисо с копчёным тофу — мисо, тофу, шиитаке, вакаме.",
+  "Крем-суп из морепродуктов — кокосовое молоко, лосось, тигровая креветка, хондаши.",
+  "Тыквенный крем-суп — кокосовое молоко, имбирь, жареный арахис.",
+  "Рамен с курицей — куриный бульон, арахисовая паста, домашняя лапша, курица су-вид.",
+  "Рамен с морепродуктами — куриный бульон, арахисовая паста, креветки, кальмар.",
+  "Фо Бо — насыщенный говяжий бульон, рисовая лапша, говядина, зелень, лайм, чили.",
+  "Том Ям с морепродуктами — острый/кислый/сладкий баланс, кокосовое молоко; подаётся с рисом.",
+  "Том Ям с лангустинами — версия с лангустинами; подаётся с рисом.",
+  "Том Ям на четверых — большая кастрюля с половником."
+ ],
+ "Якитори / кусияки / горячее":[
+  "Якитори/кусияки: можно 1 или 2 шпажки; количество уточняем сразу; можно собрать микс.",
+  "Все якитори/кусияки подаются с овощами в маринаде кимчи бейс.",
+  "Острая курица — хрустящий чили + шрирача.",
+  "Курица / индейка / лосось / сердечки / печень / шампиньоны — варианты на гриле, в основном с терияки.",
+  "Креветки с ананасом — тигровые креветки + ананас + терияки.",
+  "Язык с пореем — говяжий язык + порей + терияки.",
+  "Кальмар с чили — терияки + шрирача.",
+  "Говядина — рулетики из говядины с овощами.",
+  "Вафу стейк — обязательно уточнить степень прожарки.",
+  "Форель на гриле — овощи вок, перечный соус, лемонграсс.",
+  "Татаки из тунца — опалённый маринованный тунец, овощи, азиатский соус.",
+  "Мидии Том Ям — мидии в скорлупках, бульон Том Ям, рис.",
+  "Рис теппаньяки — варианты: овощи / курица / морепродукты / говядина."
+ ]
+};
+
+const courses={
+ hall:{
+  name:"Зал / сервис",icon:"🍽️",description:"Полный onboarding официанта: от открытия до сложных ситуаций и закрытия.",
+  modules:[
+   {id:"attention",title:"Внимание к гостю",time:3,intro:"Гость не должен добиваться внимания сотрудника.",bullets:["Замечаем входящего гостя и приветствуем.","Замечаем уходящего и прощаемся.","Следим за залом и сигналами гостей.","Личный телефон не должен мешать обслуживанию."],stop:["Не сидеть в телефоне так, что не замечаешь гостей.","Не демонстрировать раздражение."],quiz:{q:"Гость вошёл, пока ты отвечаешь на личное сообщение. Что делать?",a:["Закончить сообщение и потом подойти.","Убрать телефон и встретить гостя.","Попросить коллегу всегда встречать вместо тебя.","Подождать, пока гость сам обратится."],c:1,e:"Приоритет — увидеть и встретить гостя."}},
+   {id:"opening",title:"Открытие зала",time:5,intro:"До открытия зал должен быть полностью готов, а чек — подтверждён.",bullets:["Столы и предметы на них.","Настольные лампы.","Подоконники, перила, входная группа, тумба с зеркалом.","Меню и чек-книжки — чистые и собраны.","Соусники и подставки — протереть/пополнить.","Вазочки, барные стулья.","Стейшн: приборы, салфетки, ручник.","Подготовить натирку."],practice:"Открыть зал по чек-листу без пропусков; подписи официанта и менеджера.",quiz:{q:"Когда открытие зала считается завершённым?",a:["Когда протёрты столы.","Когда пришёл первый гость.","После чек-листа и подписей ответственного официанта и менеджера.","Когда включён свет."],c:2,e:"Подписи — часть обязательного контроля."}},
+   {id:"service",title:"Полный цикл сервиса",time:7,intro:"Официант ведёт гостя от входа до прощания.",bullets:["Приветствие → гардероб → количество гостей → стол → меню.","Напитки: помочь выбрать, повторить заказ, ориентир подачи до 4 минут, check-back.","Еда: помочь выбрать, добавки, повторить заказ, проговорить последовательность, использовать курсы для кухни.","Ориентиры: салаты/закуски 10–15; супы 10–15; крем-супы 15–20; горячее 15–25; десерты 10–15 минут.","Если кухня задерживается — предупредить заранее, не прятаться.","Предвосхищать потребность: напиток, десерт, салфетки, детский стул, ваза.","Расчёт: начать до 1 минуты; предчек до 2 минут; пересервировка после ухода до 1 минуты."],practice:"Менеджер наблюдает полный сервисный цикл.",quiz:{q:"Кухня не укладывается в ориентир по времени. Что делает официант?",a:["Избегает стола, пока блюдо не готово.","Заранее сообщает гостю о задержке и уточняет ситуацию.","Обещает точное время без проверки.","Ничего, тайминги необязательны."],c:1,e:"Коммуникация при задержке — часть стандарта сервиса."}},
+   {id:"menuBasics",title:"Меню: база и аллергии",time:4,intro:"Официант знает блюдо, но не превращает учебник в источник цены или безопасности.",bullets:["Знать: что за блюдо, ключевые ингредиенты, вкус/остроту/текстуру, альтернативы и особенности подачи.","Цена — только текущее меню/POS.","При аллергии учебник не гарантирует отсутствие аллергена или перекрёстного контакта — подтверждаем у кухни/ответственного."],stop:["Нельзя гарантировать безопасность блюда только по списку ингредиентов."],quiz:{q:"Гость сообщает о серьёзной аллергии. На что можно опереться перед обещанием?",a:["На память официанта.","На учебник меню.","На уточнение у кухни/ответственного.","На отсутствие прошлых жалоб."],c:2,e:"Аллергии всегда требуют подтверждения у кухни/ответственного."}},
+   {id:"menu1",title:"Меню: закуски и фреш-роллы",time:8,intro:"Изучаем закуски, салаты, поке, тартар и фреш-роллы.",menuGroups:["Закуски и салаты","Фреш-роллы"],quiz:{q:"Что подаётся ко всем фреш-роллам?",a:["Только соевый соус.","Лемонграсс и арахисовый соус.","Спайси и сырный соус.","Терияки и васаби."],c:1,e:"Ко всем фреш-роллам — два соуса: лемонграсс и арахисовый."}},
+   {id:"menu2",title:"Меню: роллы, суши, гунканы",time:8,intro:"Изучаем основные роллы, суши, сашими и разницу гункана по соусам.",menuGroups:["Роллы / суши / гунканы"],quiz:{q:"Чем отличаются острые гунканы от запечённых по базовому соусу?",a:["Острые: майонез+шрирача; запечённые: сырный соус.","Острые: арахис; запечённые: лемонграсс.","Разницы нет.","Острые: терияки; запечённые: кимчи."],c:0,e:"Острые — майонез + шрирача; запечённые — сырный соус."}},
+   {id:"menu3",title:"Меню: супы",time:7,intro:"Учимся различать супы по базе, остроте и подаче.",menuGroups:["Супы"],quiz:{q:"Что важно помнить про Том Ям?",a:["Он подаётся без гарнира.","Он подаётся с рисом.","Он всегда неострый.","Он готовится на мисо без кокосового молока."],c:1,e:"Том Ям подаётся с рисом; рис помогает балансировать остроту."}},
+   {id:"menu4",title:"Меню: гриль и горячее",time:7,intro:"Якитори/кусияки, Вафу стейк и горячие позиции.",menuGroups:["Якитори / кусияки / горячее"],quiz:{q:"Что нужно обязательно уточнить при заказе Вафу стейка?",a:["Количество соуса.","Степень прожарки.","Нужен ли рис.","Остроту."],c:1,e:"В пособии отдельно зафиксировано: степень прожарки Вафу стейка уточняем у гостя."}},
+   {id:"quality",title:"Контроль отдачи",time:3,intro:"Даже в запару гость не должен получить явно неправильную подачу.",bullets:["Кухня/бар проверяют отдачу; официант тоже смотрит, что выносит.","Сверяем с актуальным фото/стандартом.","Явное несоответствие возвращаем на исправление до выноса.","Особенно внимательно при новом меню, новом сотруднике и высокой загрузке."],quiz:{q:"Блюдо явно выглядит не по стандарту, но кухня в запаре. Что делать?",a:["Вынести и надеяться, что гость не заметит.","Вернуть на исправление до выноса.","Предупредить гостя уже после подачи.","Исправить самому за столом."],c:1,e:"Запара не отменяет стандарт отдачи."}},
+   {id:"booking",title:"Бронирования",time:5,intro:"Стандартный звонок + чёткие границы исключений.",bullets:["Уточнить: имя, количество гостей, дату и время.","Повторить гостю все данные.","Попросить предупредить при изменении планов/задержке.","Обычную бронь держим 15 минут.","Праздники: заранее проговорить ограничение 1,5–2 часа.","Нестандартная скидка, время, вместимость, группа или обещание → менеджер."],practice:"Принять реальную бронь по телефону по стандарту.",quiz:{q:"Гость просит держать бронь дольше стандартных 15 минут. Что делает сотрудник?",a:["Сам обещает 30 минут.","Снимает бронь сразу.","Напоминает правило и уточняет исключение у менеджера.","Игнорирует просьбу."],c:2,e:"Исключение не придумывается сотрудником — его подтверждает менеджер."}},
+   {id:"complaint",title:"Обратная связь и жалобы",time:5,intro:"Решаем проблему до ухода гостя и не обещаем то, что вне полномочий.",bullets:["Перед/во время расчёта спросить, всё ли понравилось и есть ли что исправить.","Уточнить конкретную проблему.","Обычное сервисное действие в полномочиях — исправить.","Компенсация, скидка, возврат, исключение или публичный ответ → менеджер.","Не спорить с гостем."],stop:["Аллергия, возможное отравление, инородный предмет или другой food-safety случай → немедленная эскалация.","Не давать медицинских или юридических обещаний."],quiz:{q:"Для решения жалобы нужна скидка или компенсация. Что делает официант?",a:["Выбирает размер сам.","Обещает скидку и потом уточняет.","Передаёт менеджеру/управляющей.","Спорит, если считает жалобу необоснованной."],c:2,e:"Денежные и нестандартные решения эскалируются."}},
+   {id:"events",title:"Группы и мероприятия",time:4,intro:"Задача сотрудника — собрать запрос без потерь, а не продавать условия из памяти.",bullets:["Собрать: дату/время, количество, формат, зал/рассадку, еду/напитки/пожелания, контакт ЛПР, уже данные обещания.","Зафиксировать в текущем рабочем контуре.","Для расчётов — live-источник/ответственный."],stop:["Без подтверждения не обещать цену, скидку, минимум, пробковый сбор, вместимость, нестандартное время или эксклюзивность."],quiz:{q:"Организатор просит сразу назвать специальную цену и пробковый сбор. Что делать?",a:["Назвать старые условия по памяти.","Придумать ориентир.","Собрать запрос и передать ответственному / сверить live-источник.","Отказать в мероприятии."],c:2,e:"Коммерческие условия относятся к изменяемым данным и подтверждаются отдельно."}},
+   {id:"provocation",title:"Блогеры / проверяющие / провокаторы",time:3,intro:"Главная цель — не создавать конфликт и скандальный контент.",bullets:["Вежливо и спокойно, как с обычным гостем.","Не мешать съёмке и не запрещать её.","По просьбе показать уголок потребителя.","Сложный вопрос или провокация → администратор/управляющая.","Фраза: «Сейчас я приглашу администратора»."],stop:["Не спорить, не хамить, не язвить, не закатывать глаза.","Не трогать гостя, телефон или камеру.","Не пытаться «поставить на место»."],quiz:{q:"Гость снимает на телефон и задаёт провокационные вопросы. Что делать?",a:["Запретить съёмку.","Забрать телефон.","Спокойно отвечать и пригласить администратора при сложных вопросах.","Начать спор, чтобы защитить заведение."],c:2,e:"Стандарт — спокойствие, отсутствие конфликта и быстрая эскалация."}},
+   {id:"closing",title:"Закрытие и дневные задачи",time:6,intro:"Смена заканчивается после чек-листа, дневной задачи и подтверждения.",bullets:["Меню/чекницы; приборы; диваны/стулья; соусники и соевый соус в холодильник; свечи; тряпки; стены; дневная задача.","Подпись ответственного официанта и менеджера.","Пн: пыль/декор + ножки; Вт: стейшн/кассы; Ср: доставка; Чт: тумба/вазочки/лампы; Пт: ножки; Сб: без отдельной задачи; Вс: соусники/досочки/подсвечники."],practice:"Закрыть зал и выполнить дневную задачу.",quiz:{q:"Что обязательно входит в завершение закрытия зала?",a:["Только выключить свет.","Чек-лист + дневная задача + подписи официанта и менеджера.","Только помыть столы.","Уйти после последнего гостя."],c:1,e:"Закрытие — контролируемый процесс, а не только уборка."}},
+   {id:"cinema",title:"Свет, кино и проектор",time:4,intro:"Атмосфера и техника должны быть готовы до гостя.",bullets:["Вечерний свет — по фактической темноте, не по вечной фиксированной цифре.","После съёмки/кино вернуть рабочий свет.","Фильм заранее реально запустить; проверить источник/резерв, проектор и звук.","После показа вернуть оборудование в обычный режим.","Проектор раз в 2 недели: фильтр, вентиляция, корпус; линза при необходимости."],quiz:{q:"Когда включать вечерний режим света?",a:["Всегда строго в 18:30.","Всегда строго в 20:00.","По фактической темноте и атмосфере зала.","Только после кинопоказа."],c:2,e:"Ориентир сезонный: смотрим на реальную освещённость."}}
+  ],
+  exam:[
+   {q:"Ориентир подачи напитков?",a:["До 2 минут","До 4 минут","До 8 минут","До 15 минут"],c:1,critical:false},
+   {q:"Обычную бронь держим…",a:["5 минут","10 минут","15 минут","30 минут"],c:2,critical:false},
+   {q:"Гость сообщил об аллергии. Что можно обещать?",a:["Что блюдо безопасно по учебнику","Ничего до подтверждения кухни/ответственного","Что следов аллергена точно нет","Что кухня всегда исключает контакт"],c:1,critical:true},
+   {q:"Нужна компенсация гостю.",a:["Официант выбирает сумму","Передать менеджеру","Дать скидку из памяти","Спорить"],c:1,critical:true},
+   {q:"Блюдо явно не по стандарту в запару.",a:["Вынести","Вернуть на исправление","Скрыть соусом","Спросить гостя после"],c:1,critical:false},
+   {q:"При провокации с камерой…",a:["Запретить съёмку","Тронуть камеру","Спокойно вести себя и позвать администратора","Обсудить с другими гостями"],c:2,critical:true},
+   {q:"Вафу стейк: что уточнить?",a:["Остроту","Степень прожарки","Количество шпажек","Нужен ли имбирь"],c:1,critical:false},
+   {q:"Мероприятие: можно сразу обещать специальную цену?",a:["Да","Нет, только после live-подтверждения","Да, если гостей больше 10","Да, если будний день"],c:1,critical:true}
+  ],
+  cert:["Открыть зал по чек-листу","Провести полный сервисный цикл","Принять бронь по телефону","Корректно отработать жалобу/эскалацию","Закрыть зал"]
+ },
+ bar:{
+  name:"Бар",icon:"🍸",description:"Открытие, смена, закрытие, недельный уход и критичная работа с химией.",
+  modules:[
+   {id:"barOpen",title:"Открытие бара",time:6,intro:"Бар открывается полностью подготовленным.",bullets:["Кофемашина включена.","Пакеты в мусорные баки.","Бойлер: фильтрованная вода → 100°C → после закипания 90°C.","Станции укомплектованы напитками, фруктами, посудой по ротации.","Органайзеры заполнены.","Заготовки и сроки проверены.","Три чистые тряпки: форсунка / бокалы / поверхности.","Стоп-лист → менеджеру.","Тапиока: ½ стакана будни, 1 стакан выходные.","Заканчивается морс → попросить кухню сварить заранее."],practice:"Открыть бар по чек-листу.",quiz:{q:"Что делаем с бойлером при открытии?",a:["Сразу 70°C","100°C, затем снизить до 90°C","Оставить выключенным","Заполнить кипятком из кофемашины"],c:1,e:"Текущий чек-лист: нагреть до 100°C, затем снизить до 90°C."}},
+   {id:"barShift",title:"Смена: качество и стоп-лист",time:4,intro:"Не скрываем отсутствие позиции и не отдаём плохой продукт.",bullets:["Проверять внешний вид напитка/позиции.","Явно неверную отдачу исправить до гостя.","Заканчивающаяся позиция → стоп-лист/менеджер.","Не оставлять проблему следующей смене.","Не терять гостя из-за телефона."],quiz:{q:"Позиция закончилась в середине смены. Что делать?",a:["Молчать до следующей смены","Составить/обновить стоп-лист и сообщить менеджеру","Заменить ингредиент без согласования","Продолжать принимать заказы"],c:1,e:"Отсутствующие позиции должны быть прозрачны команде."}},
+   {id:"barClose",title:"Закрытие бара",time:7,intro:"Бар закрывается чистым и укомплектованным.",bullets:["Списания; посуда с мойки + натирка.","Кофемашина, пивная станция/краны, станции.","Шейкеры, джиггеры, инструменты, доска.","Бутылки и гейзеры.","Коврики/каплесборник; раковина; белая плитка.","Холодильники снаружи; блендер; соковыжималка; краш-машина; бойлер.","Специи/морсы закрыть; скоропортящееся → холодильник.","Тряпки → мойка; оборудование отключить; мусор вынести."],practice:"Закрыть бар без пропусков.",quiz:{q:"Что делаем со скоропортящимися продуктами на закрытии?",a:["Оставляем на станции","Убираем в холодильник","Выбрасываем всё","Передаём официанту"],c:1,e:"Скоропортящееся убирается в холодильник."}},
+   {id:"barWeek",title:"Недельный уход",time:5,intro:"У каждой глубокой уборки есть свой день.",bullets:["Пн: кофемашина/холдеры/питчеры с химией, стены, дощечки.","Вт: налёт с питчеров, красные полки/зеркала/бутылки, блендер полностью.","Ср: оба ледогенератора, сетка под стаканами, холодильники внутри.","Чт: полностью обе станции.","Пт: полки/ящики у кофемашины, раковина с химией.","Вс: холодильники внутри."],quiz:{q:"Когда по чек-листу полностью разбирают и моют обе станции?",a:["Понедельник","Среда","Четверг","Воскресенье"],c:2,e:"Четверг — обе станции полностью."}},
+   {id:"chem",title:"Химия и оборудование",time:4,intro:"Критический модуль: дозировки и средства нельзя переносить «по памяти».",bullets:["Если средство/оборудование/инструкция изменились — сверить упаковку/мануал и менеджера.","Не переносить дозировку автоматически.","Средства не смешивать.","После химии тщательно промывать чистой водой."],stop:["Ошибка по химии — critical fail в аттестации."],practice:"Показать безопасную процедуру химической мойки.",quiz:{q:"Средство для химической мойки заменили на другое. Что делать?",a:["Использовать старую дозировку","Смешать со старым средством","Сверить новую инструкцию/упаковку и менеджера","Добавить больше для надёжности"],c:2,e:"Дозировки привязаны к конкретному средству и оборудованию."}},
+   {id:"barGuest",title:"Гость и отдача",time:3,intro:"Бармен тоже отвечает за вид отдачи и внимание к гостю.",bullets:["Замечать вход/выход/сигналы.","Не погружаться в личный телефон.","Проверять то, что отдаёшь.","Сомнение по качеству → исправить до гостя."],quiz:{q:"Напиток выглядит явно не по стандарту. Что делать?",a:["Отдать, если очередь большая","Исправить до отдачи","Сказать гостю после","Попросить официанта решить"],c:1,e:"Стандарт качества действует даже при высокой загрузке."}}
+  ],
+  exam:[
+   {q:"Бойлер при открытии: до какой температуры нагреть сначала?",a:["70°C","80°C","90°C","100°C"],c:3,critical:false},
+   {q:"Тапиока в будни?",a:["¼ стакана","½ стакана","1 стакан","2 стакана"],c:1,critical:false},
+   {q:"Скоропортящееся на закрытии?",a:["На станции","В холодильник","Выбросить всё","Оставить на ночь"],c:1,critical:true},
+   {q:"Новое химическое средство?",a:["Старая дозировка","Сверить инструкцию и менеджера","Смешать со старым","Увеличить концентрацию"],c:1,critical:true},
+   {q:"Когда моют обе станции полностью?",a:["Вт","Ср","Чт","Вс"],c:2,critical:false},
+   {q:"Позиция закончилась?",a:["Скрыть","Стоп-лист + менеджер","Заменить без согласования","Ждать завтра"],c:1,critical:true}
+  ],
+  cert:["Открыть бар","Собрать/передать стоп-лист","Корректно отдать позицию","Закрыть бар","Показать безопасную химическую мойку"]
+ },
+ manager:{
+  name:"Менеджер / управляющая",icon:"👩‍💼",description:"Контроль смены, исключения, жалобы, мероприятия и подтверждение навыков команды.",
+  modules:[
+   {id:"mgrShift",title:"Контроль смены",time:5,intro:"Sign-off означает фактическую проверку.",bullets:["Проверить открытие зала.","Проверить дневную задачу.","Проверить закрытие зала.","Проверить барное открытие/закрытие.","Не подписывать «по привычке»."],quiz:{q:"Что означает подпись менеджера в чек-листе открытия/закрытия?",a:["Что менеджер был на смене","Фактическую проверку выполнения","Что сотрудник обещал выполнить","Что всё делалось вчера"],c:1,e:"Sign-off = проверенный факт выполнения."}},
+   {id:"mgrService",title:"Сервис и коучинг",time:5,intro:"Менеджер видит отклонение раньше, чем оно становится жалобой.",bullets:["Следить за вниманием к гостю.","Контролировать коммуникацию при задержке.","Проверять check-back.","Останавливать плохую отдачу до гостя.","Корректировать сотрудника без спора при гостях."],quiz:{q:"Кухня задерживает блюдо, официант избегает стола. Что делает менеджер?",a:["Ждёт жалобы","Помогает организовать коммуникацию с гостем","Обещает скидку","Ничего"],c:1,e:"При задержке главное — своевременная коммуникация."}},
+   {id:"mgrBooking",title:"Брони и исключения",time:4,intro:"Сотрудник знает стандарт; менеджер решает исключение.",bullets:["Бронь 15 минут.","Праздники 1,5–2 часа.","Сотрудник повторяет данные гостю.","Исключения по времени/вместимости/скидке не придумываются сотрудником."],quiz:{q:"Официант просит подтвердить нестандартное время удержания брони. Что делает менеджер?",a:["Говорит «решай сам»","Подтверждает или отклоняет исключение, чтобы правило было ясным","Игнорирует","Всегда разрешает"],c:1,e:"Исключение должно иметь явного владельца решения."}},
+   {id:"mgrComplaint",title:"Жалоба, компенсация, публичный ответ",time:5,intro:"Нестандартное решение и публичная позиция принадлежат менеджеру/управляющей.",bullets:["Возврат/скидка/компенсация/исключение → менеджер.","Чувствительный публичный ответ — human approval.","Food-safety кейс → немедленная эскалация ответственному.","Не давать медицинских/юридических обещаний."],stop:["Food-safety и денежные решения — critical."],quiz:{q:"Гость сообщает о возможном отравлении. Что делать?",a:["Пообещать компенсацию и диагноз","Немедленно эскалировать ответственному, не давать мед/юр обещаний","Спорить","Скрыть отзыв"],c:1,e:"Food-safety — критическая эскалация."}},
+   {id:"mgrEvents",title:"Группы и мероприятия",time:5,intro:"Коммерческие условия подтверждаются live-источником.",bullets:["Проверить, что собраны дата/время, количество, формат, зал/рассадка, еда/напитки, контакт ЛПР, обещания.","Для расчётов использовать актуальную экономику/ответственного.","Не подтверждать из памяти цену, скидку, минимум, пробковый сбор, вместимость, нестандартное время, эксклюзивность."],quiz:{q:"Менеджер помнит старую цену мероприятия. Можно её подтвердить гостю?",a:["Да","Нет, нужно сверить live-источник/актуальную экономику","Да, если похожий кейс","Да, если будний день"],c:1,e:"Параметры мероприятий относятся к изменяемым коммерческим данным."}},
+   {id:"mgrProvocation",title:"Провокация / камера / проверяющий",time:3,intro:"Менеджер не превращает ситуацию в конфликт.",bullets:["Команда спокойно и вежливо.","Не запрещать съёмку.","Уголок потребителя по просьбе.","Не трогать гостя/телефон/камеру.","Сложный вопрос централизуется у администратора/управляющей."],quiz:{q:"Сотрудник начал спорить с гостем, который снимает видео. Что делает менеджер?",a:["Поддерживает спор","Останавливает конфликт и переводит коммуникацию на себя","Забирает телефон","Выгоняет без разговора"],c:1,e:"Главная задача — деэскалация и единая коммуникация."}},
+   {id:"mgrAtmosphere",title:"Атмосфера, кино, проектор",time:4,intro:"Техника и режимы проверяются заранее.",bullets:["Свет — по фактической темноте.","После кино вернуть рабочий режим.","Фильм заранее запустить; проверить источник/резерв, проектор, звук.","Проектор — чистка раз в 2 недели."],quiz:{q:"Когда проверяем фильм/источник для кинопоказа?",a:["После прихода гостей","Во время первых минут показа","Заранее","Только если в прошлый раз были проблемы"],c:2,e:"Источник и техника проверяются до гостей."}},
+   {id:"mgrWiki",title:"Актуальность правил и обучение команды",time:4,intro:"Один verified-канон важнее устных версий.",bullets:["Если WIKI расходится с реальностью — исправить источник, а не создать второе устное правило.","Единичный нестандартный кейс не автоматически становится общим SOP.","Practical sign-off ставится после наблюдаемого навыка.","Существенное изменение SOP → refresh затронутым сотрудникам."],practice:"Подтвердить один навык сотрудника после наблюдения.",quiz:{q:"Сотрудник говорит: «Мы давно делаем иначе, чем в WIKI». Что правильно?",a:["Оставить две версии","Продолжать устно","Проверить current source of truth и обновить канон","Удалить WIKI"],c:2,e:"Расхождение нужно разрешить в источнике правды."}}
+  ],
+  exam:[
+   {q:"Food-safety жалоба?",a:["Обещать компенсацию","Немедленная эскалация без мед/юр обещаний","Спорить","Ответить публично сразу"],c:1,critical:true},
+   {q:"Коммерческие условия мероприятия?",a:["Из памяти","Из старого сообщения","Live-экономика/ответственный","По аналогии"],c:2,critical:true},
+   {q:"Sign-off навыка?",a:["После прочтения SOP","После наблюдаемого выполнения","После устного обещания","Автоматически"],c:1,critical:false},
+   {q:"Бронь стандартно держим?",a:["10 мин","15 мин","20 мин","30 мин"],c:1,critical:false},
+   {q:"Провокатор снимает?",a:["Запретить","Спокойно, не мешать съёмке, сложное — менеджеру","Забрать телефон","Публично спорить"],c:1,critical:true},
+   {q:"WIKI не совпадает с реальностью?",a:["Создать устное исключение навсегда","Исправить/проверить source of truth","Игнорировать","Сделать вторую таблицу"],c:1,critical:false}
+  ],
+  cert:["Принять смену по opening checks","Отработать жалобу","Подтвердить нестандартную бронь","Проверить запрос на мероприятие","Провести sign-off сотрудника","Разрешить конфликт WIKI vs reality"]
+ },
+ kitchen:{
+  name:"Кухня",icon:"🍳",description:"Пока только подтверждённый слой. Полный food-safety курс ждёт current source of truth шефа.",
+  lockedMessage:"Полная аттестация кухни пока намеренно заблокирована: нет подтверждённого канона по маркировке, хранению, аллергенам, санитарии, opening/closing и холодильному контролю.",
+  modules:[
+   {id:"kitchenQuality",title:"Контроль отдачи",time:3,intro:"Кухня проверяет внешний вид блюда до передачи в зал.",bullets:["Сверить с актуальным фото/стандартом.","Явно неверную отдачу исправить до гостя.","Особое внимание: новый сотрудник, новое меню, первые отдачи, высокая загрузка, позиция с жалобами."],quiz:{q:"Блюдо явно не соответствует актуальному виду. Что делать?",a:["Отдать, если много заказов","Исправить до гостя","Спрятать недостаток","Ждать жалобу"],c:1,e:"Качество отдачи проверяется до гостя."}}
+  ],
+  exam:[],
+  cert:[]
+ }
+};
+
+let state={role:"hall",moduleId:null,examIndex:0,examAnswers:[],examScore:0,examCriticalFail:false};
+const progressKey="jd_academy_progress_v1";
+function getProgress(){try{return JSON.parse(localStorage.getItem(progressKey)||"{}")}catch{return {}}}
+function saveProgress(p){try{localStorage.setItem(progressKey,JSON.stringify(p))}catch{}}
+function markDone(role,id){const p=getProgress();p[role]=p[role]||{};p[role][id]=true;saveProgress(p)}
+function isDone(role,id){const p=getProgress();return !!(p[role]&&p[role][id])}
+function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));window.scrollTo({top:0,behavior:"instant"})}
+
+function setHomeRole(role,btn){
+ document.querySelectorAll("#home .role-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");
+ const c=courses[role];const first=c.modules[0];
+ document.getElementById("homeRoleMeta").textContent=c.name+" · "+c.modules.length+" мод.";
+ document.getElementById("homeRoleTitle").textContent=first.title;
+ document.getElementById("homeRoleCopy").textContent=c.description;
+ document.getElementById("homeContinue").onclick=()=>openTrack(role);
 }
-function answer(i,el){
-  document.querySelectorAll('.option').forEach(x=>x.disabled=true);
-  el.classList.add('sel');
-  const f=document.getElementById('feedback');
-  f.className='feedback show '+(i===2?'good':'bad');
-  f.textContent=i===2?'Верно. 15 минут — стандарт, исключение подтверждает менеджер.':'Не совсем. Стандарт — 15 минут, исключение подтверждает менеджер.';
-  document.getElementById('quizNext').style.display='inline-flex';
+function openTrack(role){
+ state.role=role;const c=courses[role];show("track");
+ document.getElementById("trackTitle").textContent=c.icon+" "+c.name;
+ document.getElementById("trackSub").textContent=c.description;
+ document.getElementById("trackHeading").textContent="Программа обучения";
+ document.getElementById("trackDescription").textContent=role==="kitchen"?"Только подтверждённые модули.":"Модули идут от базы к сложным ситуациям.";
+ document.querySelectorAll("#track .role-btn").forEach(b=>b.classList.toggle("active",b.dataset.role===role));
+ renderTrack();
 }
-function confirmSkill(){
-  const b=document.getElementById('signoff');
-  b.textContent='✓ Подтверждено';
-  b.disabled=true;
-  document.getElementById('doneNote').classList.add('show');
+function renderTrack(){
+ const c=courses[state.role], list=document.getElementById("moduleList");list.innerHTML="";
+ let done=0;
+ c.modules.forEach((m,i)=>{
+   const d=isDone(state.role,m.id);if(d)done++;
+   const row=document.createElement("div");row.className="module-row "+(d?"done ":"")+(i===done?"current ":"");
+   row.innerHTML='<div class="module-num">'+(d?"✓":String(i+1).padStart(2,"0"))+'</div><div><h3>'+m.title+'</h3><p>'+m.time+' мин'+(m.practice?" · практика":"")+'</p></div><div class="arrow">→</div>';
+   row.onclick=()=>openModule(m.id);list.appendChild(row);
+ });
+ if(c.exam&&c.exam.length){
+   const examDone=isDone(state.role,"__exam__");const row=document.createElement("div");row.className="module-row "+(examDone?"done ":"");
+   row.innerHTML='<div class="module-num">'+(examDone?"✓":"★")+'</div><div><h3>Финальная аттестация</h3><p>'+c.exam.length+' ситуационных вопросов</p></div><div class="arrow">→</div>';
+   row.onclick=()=>startExam();list.appendChild(row);
+ }
+ const total=c.modules.length+(c.exam&&c.exam.length?1:0),completed=done+(isDone(state.role,"__exam__")?1:0),pct=total?Math.round(completed/total*100):0;
+ document.getElementById("trackPercent").textContent=pct+"%";document.getElementById("trackProgress").style.width=pct+"%";document.getElementById("trackCount").textContent=completed+" / "+total;
+ const lock=document.getElementById("trackLock");
+ if(c.lockedMessage){lock.style.display="block";lock.innerHTML="<strong>Почему курс частичный</strong>"+c.lockedMessage}else lock.style.display="none";
+}
+function backToTrack(){openTrack(state.role)}
+function openModule(id){
+ state.moduleId=id;const m=courses[state.role].modules.find(x=>x.id===id);if(!m)return;
+ show("lesson");document.getElementById("lessonRole").textContent=courses[state.role].icon+" "+courses[state.role].name;document.getElementById("lessonMeta").textContent=m.title;document.getElementById("lessonTime").textContent=m.time+" мин";
+ let main='<div class="panel"><h2>'+m.title+'</h2><p class="intro">'+m.intro+'</p>';
+ if(m.bullets){main+='<div class="bullets">'+m.bullets.map(b=>'<div class="bullet">'+b+'</div>').join("")+'</div>'}
+ main+='</div>';
+ let side='';
+ if(m.stop&&m.stop.length)side+='<div class="stop"><h3>⛔ Стоп</h3><ul>'+m.stop.map(x=>'<li>'+x+'</li>').join("")+'</ul></div>';
+ if(m.practice)side+='<div class="practice-card"><h3>Практика</h3><p>'+m.practice+'</p></div>';
+ if(m.menuGroups){
+   main='<div class="panel"><h2>'+m.title+'</h2><p class="intro">'+m.intro+'</p><div id="menuCatalog"></div></div>';
+ }
+ side+='<button class="cta" onclick="startModuleQuiz()">Проверить себя</button>';
+ document.getElementById("lessonBody").innerHTML='<div class="lesson-grid">'+main+'<div class="side">'+side+'</div></div>';
+ if(m.menuGroups)renderMenuCatalog(m.menuGroups);
+}
+function renderMenuCatalog(groups){
+ const root=document.getElementById("menuCatalog");let html='';
+ groups.forEach(g=>{
+   html+='<h3 style="margin:20px 0 10px">'+g+'</h3><div class="menu-items">';
+   (menuCatalog[g]||[]).forEach(item=>{const parts=item.split(" — ");html+='<details class="dish"><summary>'+parts[0]+'</summary><p>'+(parts.slice(1).join(" — ")||"Изучить состав и подачу по актуальному учебнику.")+'</p></details>'});
+   html+='</div>';
+ });root.innerHTML=html;
+}
+function startModuleQuiz(){
+ const m=courses[state.role].modules.find(x=>x.id===state.moduleId);if(!m||!m.quiz){markDone(state.role,state.moduleId);return modulePassed()}
+ show("quiz");document.getElementById("quizTitle").textContent=m.title;document.getElementById("questionText").textContent=m.quiz.q;
+ const box=document.getElementById("options");box.innerHTML="";document.getElementById("feedback").className="feedback";document.getElementById("quizAction").style.display="none";
+ m.quiz.a.forEach((a,i)=>{const b=document.createElement("button");b.className="option";b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+a+'</span>';b.onclick=()=>answerModule(i,b,m.quiz);box.appendChild(b)});
+}
+function returnToLesson(){openModule(state.moduleId)}
+function answerModule(i,b,q){
+ document.querySelectorAll("#options .option").forEach(x=>x.disabled=true);b.classList.add("selected");
+ const f=document.getElementById("feedback"),act=document.getElementById("quizAction");
+ if(i===q.c){f.className="feedback show good";f.textContent=q.e;act.textContent="Завершить модуль";act.onclick=()=>{markDone(state.role,state.moduleId);modulePassed()}}
+ else{f.className="feedback show bad";f.textContent="Не совсем. "+q.e;act.textContent="Попробовать ещё раз";act.onclick=()=>startModuleQuiz()}
+ act.style.display="inline-flex";
+}
+function modulePassed(){
+ show("result");document.getElementById("resultTitle").textContent="Модуль пройден";document.getElementById("resultCopy").textContent="Прогресс сохранён. Следующий модуль уже доступен.";const b=document.getElementById("resultButton");b.textContent="Вернуться к треку";b.onclick=()=>openTrack(state.role);
+}
+function startExam(){
+ const c=courses[state.role];if(!c.exam||!c.exam.length)return;
+ state.examIndex=0;state.examAnswers=[];state.examScore=0;state.examCriticalFail=false;show("exam");document.getElementById("examRole").textContent=c.icon+" "+c.name;renderExamQuestion();
+}
+function renderExamQuestion(){
+ const c=courses[state.role],q=c.exam[state.examIndex];document.getElementById("examCounter").textContent="Вопрос "+(state.examIndex+1)+" из "+c.exam.length;document.getElementById("examScore").textContent="Верно: "+state.examScore;document.getElementById("examQuestion").textContent=q.q;
+ const box=document.getElementById("examOptions");box.innerHTML="";document.getElementById("examFeedback").className="feedback";document.getElementById("examNext").style.display="none";
+ q.a.forEach((a,i)=>{const b=document.createElement("button");b.className="option";b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+a+'</span>';b.onclick=()=>answerExam(i,b,q);box.appendChild(b)});
+}
+function answerExam(i,b,q){
+ document.querySelectorAll("#examOptions .option").forEach(x=>x.disabled=true);b.classList.add("selected");const ok=i===q.c;if(ok)state.examScore++;if(q.critical&&!ok)state.examCriticalFail=true;
+ const f=document.getElementById("examFeedback");f.className="feedback show "+(ok?"good":"bad");f.textContent=ok?"Верно.":"Неверно. Этот вопрос будет учтён в результате.";
+ const next=document.getElementById("examNext");next.style.display="inline-flex";next.textContent=state.examIndex===courses[state.role].exam.length-1?"Завершить аттестацию":"Дальше";next.onclick=()=>{state.examIndex++;if(state.examIndex<courses[state.role].exam.length)renderExamQuestion();else finishExam()};
+}
+function finishExam(){
+ const c=courses[state.role],pct=Math.round(state.examScore/c.exam.length*100),pass=pct>=80&&!state.examCriticalFail;
+ show("result");document.getElementById("resultTitle").textContent=pass?"Аттестация пройдена":"Нужно повторить";document.getElementById("resultCopy").textContent=pass?("Результат "+pct+"%. Все критические вопросы пройдены."):("Результат "+pct+"%. "+(state.examCriticalFail?"Есть ошибка в критической теме. ":"")+"Повтори слабые модули и попробуй снова.");
+ const b=document.getElementById("resultButton");
+ if(pass){markDone(state.role,"__exam__");b.textContent=c.cert&&c.cert.length?"Перейти к практике":"Вернуться к треку";b.onclick=()=>c.cert&&c.cert.length?openCertification():openTrack(state.role)}
+ else{b.textContent="Вернуться к треку";b.onclick=()=>openTrack(state.role)}
+}
+function openCertification(){
+ const c=courses[state.role];show("cert");document.getElementById("certRole").textContent=c.icon+" "+c.name;document.getElementById("certTasks").innerHTML=c.cert.map(x=>'<div class="task-line">'+x+'</div>').join("");document.getElementById("certDone").className="done-note";document.getElementById("signoffBtn").disabled=false;document.getElementById("signoffBtn").textContent="Подтвердить навыки";
+}
+function confirmCertification(){
+ document.getElementById("signoffBtn").textContent="✓ Подтверждено";document.getElementById("signoffBtn").disabled=true;document.getElementById("certDone").classList.add("show");markDone(state.role,"__cert__");
 }
 </script>
-</body>
-</html>
+</body></html>
