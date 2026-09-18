@@ -4,393 +4,307 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#F7E6A2">
-<title>John Doe Academy</title>
+<meta name="theme-color" content="#F5E39A">
+<title>John Doe Academy — v5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --page:#F7E6A2;
-  --canvas:#FCFCFB;
-  --ink:#1E1D22;
-  --muted:#6F6C75;
-  --soft:#F3F2F4;
+  --page:#F5E39A;
+  --canvas:#FBFBFA;
+  --ink:#1D1C21;
+  --muted:#706D76;
   --line:#E8E5EA;
-  --orange:#FF7B2E;
-  --orange2:#FF9B5A;
-  --lav:#C5A3FF;
-  --lav2:#EBDDFF;
-  --yellow:#F4D978;
-  --green:#5F8D51;
-  --green2:#E0F0DA;
-  --shadow:0 20px 70px rgba(90,65,18,.12);
+  --soft:#F5F3F6;
+  --orange:#FF7A2E;
+  --orange-soft:#FFE9DB;
+  --lav:#C7A6FF;
+  --lav-soft:#EEE2FF;
+  --green:#5D8A50;
+  --green-soft:#E3F0DE;
+  --shadow:0 22px 70px rgba(77,58,15,.10);
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--page);color:var(--ink);font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button,input{font:inherit}
-button{cursor:pointer}
+button{font:inherit;color:inherit;cursor:pointer}
 body{min-height:100vh}
-.outer{padding:40px 18px}
-.app{width:min(1180px,100%);margin:0 auto;background:var(--canvas);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
-.screen{display:none;min-height:760px;padding:26px 30px 30px}
+.shell{padding:36px 16px}
+.app{width:min(1120px,100%);margin:0 auto;background:var(--canvas);border-radius:30px;box-shadow:var(--shadow);overflow:hidden}
+.screen{display:none;min-height:720px;padding:28px}
 .screen.active{display:block}
-.topbar{display:grid;grid-template-columns:auto minmax(260px,1fr) auto;align-items:center;gap:26px;margin-bottom:28px}
-.brand{display:flex;align-items:center;gap:12px;min-width:170px}
-.logo{width:38px;height:38px;border-radius:14px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);font-weight:700;letter-spacing:-.04em;position:relative}
-.logo:after{content:"✦";position:absolute;right:-8px;top:-8px;color:var(--orange);font-size:14px}
-.brand-copy{font-size:13px;line-height:1.05;font-weight:700}
-.search{height:40px;max-width:340px;border-radius:999px;background:var(--soft);display:flex;align-items:center;gap:9px;padding:0 14px;color:var(--muted);font-size:13px}
-.search-icon{font-size:14px}
-.actions{display:flex;align-items:center;gap:9px;justify-content:flex-end}
-.pill{height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);display:flex;align-items:center;gap:8px;font-size:13px}
-.pill.orange{background:var(--orange);color:#fff;border-color:transparent}
-.avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--lav),var(--orange2));color:#fff;font-size:12px;font-weight:700}
-.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:30px;align-items:start}
-.hero-left{padding:12px 8px 0}
-.hero-title{font-size:clamp(48px,6vw,80px);line-height:.98;letter-spacing:-.055em;font-weight:500;margin:0;max-width:650px}
-.hero-title .fun{position:relative;display:inline-block}
-.hero-title .fun:after{content:"";position:absolute;left:5%;right:-4%;bottom:-8px;height:9px;border-radius:50%;border-top:5px solid var(--orange);transform:rotate(-2deg)}
-.hero-title .accent{color:var(--lav)}
-.hero-copy{font-size:18px;line-height:1.52;color:var(--muted);max-width:560px;margin:28px 0 0}
-.primary-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:26px}
-.main-btn{height:56px;padding:0 24px;border:0;border-radius:999px;background:var(--orange);color:#fff;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:12px}
-.main-btn .arrow{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:18px}
-.secondary-btn{height:52px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
-.handnote{font-family:"Comic Sans MS","Bradley Hand",cursive;color:#9D78E7;font-size:16px;line-height:1.08;transform:rotate(-4deg);margin-left:8px}
-.next-card{margin-top:34px;border-radius:26px;padding:14px;background:#FFF7F2;display:grid;grid-template-columns:145px 1fr;gap:16px;align-items:center}
-.reserve-visual{height:118px;border-radius:20px;background:linear-gradient(145deg,#E8C08B,#8E5C34);position:relative;overflow:hidden}
-.reserve-visual:before{content:"RESERVED";position:absolute;left:22px;bottom:17px;background:#D7B47C;color:#5D3F25;padding:8px 11px;font-size:10px;letter-spacing:.08em;transform:rotate(-4deg);box-shadow:0 8px 18px rgba(40,20,0,.15)}
-.reserve-visual:after{content:"🥂";position:absolute;right:22px;top:16px;font-size:48px;filter:saturate(.8)}
-.next-tag{display:inline-flex;align-items:center;gap:6px;background:var(--lav2);color:#6D4BAA;height:28px;padding:0 10px;border-radius:999px;font-size:11px}
-.next-copy h3{font-size:22px;line-height:1.08;margin:9px 0 7px;font-weight:600;letter-spacing:-.03em}
-.next-copy p{font-size:14px;line-height:1.4;color:var(--muted);margin:0}
-.small-link{border:0;background:transparent;color:var(--orange);font-weight:700;padding:0;margin-top:12px}
-.stats{display:flex;gap:34px;flex-wrap:wrap;margin-top:34px}
-.stat{min-width:120px}
-.stat strong{display:block;font-size:46px;line-height:1;letter-spacing:-.05em;font-weight:500}
-.stat span{display:block;margin-top:6px;color:var(--muted);font-size:13px}
-.hero-right{display:grid;gap:14px}
-.staff-card{min-height:390px;border-radius:30px;background:linear-gradient(145deg,#FFE8D7 0%,#F6D9C3 42%,#E8DDFB 100%);position:relative;overflow:hidden}
-.staff-card svg{position:absolute;inset:0;width:100%;height:100%}
-.staff-caption{position:absolute;left:22px;right:22px;bottom:20px;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:14px 16px}
-.staff-caption strong{font-size:20px;font-weight:600;letter-spacing:-.03em}
-.staff-caption p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.38}
-.fun-grid{display:grid;grid-template-columns:1fr 1fr 1.7fr;gap:12px}
-.fun-tile{border-radius:24px;min-height:150px;padding:16px;position:relative;overflow:hidden}
-.fun-tile.yellow{background:var(--yellow);display:grid;place-items:center;font-size:54px}
-.fun-tile.lav{background:var(--lav2);display:grid;place-items:center;font-size:54px;color:#8761D5}
-.fun-tile.orange{background:linear-gradient(145deg,var(--orange),#FF6A22);color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
-.fun-tile.orange:before,.fun-tile.orange:after{content:"";position:absolute;border:3px solid rgba(255,255,255,.09);border-radius:50%}
-.fun-tile.orange:before{width:150px;height:150px;right:-65px;top:-25px}
-.fun-tile.orange:after{width:95px;height:95px;right:20px;bottom:-35px}
-.fun-tile h3{margin:0 0 7px;font-size:22px;font-weight:600;letter-spacing:-.03em}
-.fun-tile p{margin:0;color:rgba(255,255,255,.88);font-size:13px;line-height:1.38;max-width:220px}
-.header-simple{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:36px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:14px}
+.logo{width:38px;height:38px;border-radius:14px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-weight:800;position:relative}
+.logo:after{content:"✦";position:absolute;right:-7px;top:-8px;color:var(--orange);font-size:13px}
+.top-actions{display:flex;align-items:center;gap:9px}
+.pill{height:40px;padding:0 14px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;gap:8px;font-size:12px}
+.avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--lav),var(--orange));color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+.hero h1{font-size:clamp(48px,6.2vw,76px);line-height:.98;letter-spacing:-.055em;font-weight:500;margin:0;max-width:650px}
+.hero h1 .accent{color:var(--lav)}
+.hero h1 .underline{position:relative;display:inline-block}
+.hero h1 .underline:after{content:"";position:absolute;left:6%;right:-2%;bottom:-8px;border-top:5px solid var(--orange);border-radius:50%;transform:rotate(-2deg)}
+.hero p{font-size:18px;line-height:1.52;color:var(--muted);max-width:520px;margin:24px 0 0}
+.cta{height:56px;border:0;border-radius:999px;background:var(--orange);color:#fff;padding:0 22px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:12px}
+.cta .circle{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:18px}
+.ghost{height:52px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:0 18px;font-weight:600}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.illustration{min-height:420px;border-radius:30px;background:linear-gradient(145deg,#FFE6D4,#F8D9C1 42%,#E9DDFC);position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;opacity:.75}
+.blob.one{width:170px;height:170px;background:#F8D978;right:-40px;top:22px}
+.blob.two{width:150px;height:150px;background:var(--lav);left:-55px;bottom:24px;opacity:.33}
+.staff{position:absolute;left:11%;right:11%;top:15%;bottom:12%;display:flex;align-items:flex-end;justify-content:center;gap:18px}
+.person{width:34%;height:68%;border-radius:60px 60px 28px 28px;background:#2B292B;position:relative}
+.person:before{content:"";position:absolute;width:68%;aspect-ratio:1;border-radius:50%;background:#EEC4A4;left:16%;top:-34%}
+.person:after{content:"JD";position:absolute;left:50%;top:42%;transform:translateX(-50%);color:#F7A460;font-weight:700;font-size:22px}
+.person.two{height:74%}
+.tablet{position:absolute;width:32%;height:20%;left:34%;bottom:8%;border-radius:18px;background:#272A30;box-shadow:0 10px 26px rgba(0,0,0,.18)}
+.illustration-note{position:absolute;left:22px;right:22px;bottom:20px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:22px;padding:14px 16px;font-size:14px;line-height:1.4}
+.current{margin-top:28px;border-radius:26px;background:#fff7f1;padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+.current small{display:block;color:#7A5E93;font-size:11px;margin-bottom:5px}
+.current h3{margin:0;font-size:22px;letter-spacing:-.025em}
+.current p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.current button{border:0;background:#fff;border-radius:50%;width:46px;height:46px;font-size:20px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:26px}
 .header-left{display:flex;align-items:center;gap:10px}
 .back{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff}
 .header-title{font-weight:700}
-.view-chip{height:38px;padding:0 13px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;font-size:12px;color:var(--muted)}
-.dashboard-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
-.resume-panel,.side-panel,.lesson-card,.quiz-card,.manager-card{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
-.resume-panel h2,.lesson-card h2,.quiz-card h2{font-size:36px;line-height:1.04;letter-spacing:-.045em;margin:0;font-weight:600}
-.resume-panel p,.lesson-card p{margin:10px 0 0;color:var(--muted);line-height:1.45;font-size:15px}
-.progress{height:10px;border-radius:999px;background:#EEEAF0;overflow:hidden;margin-top:16px}
-.progress i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--lav),var(--orange))}
-.side-panel{display:grid;gap:14px;align-content:start}
-.notice{border-radius:22px;padding:16px;background:#FFF8F0;color:var(--ink);font-size:14px;line-height:1.45}
-.path-list{display:grid;gap:12px}
-.path-item{background:#fff;border-radius:24px;padding:16px;display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:14px;border:1px solid #EFECEF}
-.path-num{width:58px;height:58px;border-radius:20px;display:grid;place-items:center;font-size:20px;font-weight:700}
-.path-item.done .path-num{background:var(--green2);color:var(--green)}
-.path-item.current .path-num{background:var(--lav2);color:#7C58C2}
-.path-item.idle .path-num{background:#F1EFF3;color:#8E8498}
-.path-item h3{margin:0 0 3px;font-size:19px;letter-spacing:-.02em}
-.path-item p{margin:0;color:var(--muted);font-size:13px}
-.lesson-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.rule-box{margin-top:18px;background:#FFF7F0;border-radius:24px;padding:20px}
-.rule-box strong{font-size:30px;line-height:1.05;display:block;letter-spacing:-.04em}
-.rule-box p{margin:9px 0 0}
-.script-box{background:linear-gradient(180deg,#F7F0FF,#fff);border-radius:24px;padding:20px;font-size:16px;line-height:1.55}
-.quiz-options{display:grid;gap:11px;margin-top:18px}
-.option{border:1px solid #EFECEF;background:#fff;border-radius:22px;padding:16px;text-align:left;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center}
-.option .letter{width:48px;height:48px;border-radius:16px;background:#F3F0F7;color:#7451B6;display:grid;place-items:center;font-weight:700}
-.option.sel{outline:2px solid #E2D0FF;background:#FCFAFF}
+.header-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.mini-pill{height:36px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;font-size:12px;color:var(--muted)}
+.main-panel{background:#fff;border-radius:28px;padding:24px;border:1px solid #EFECEF}
+.main-panel h2{font-size:36px;line-height:1.05;letter-spacing:-.045em;margin:0;font-weight:600}
+.main-panel p{font-size:15px;line-height:1.45;color:var(--muted);margin:10px 0 0}
+.today-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.progress-panel{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
+.progress-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.progress-row strong{font-size:32px;letter-spacing:-.04em}
+.progress{height:9px;border-radius:999px;background:#EEEAF1;overflow:hidden;margin-top:14px}
+.progress i{display:block;height:100%;width:74%;background:linear-gradient(90deg,var(--lav),var(--orange));border-radius:inherit}
+.notice{margin-top:14px;border-radius:20px;background:#FFF8F0;padding:14px 16px;font-size:13px;line-height:1.45}
+.path-panel{background:#fff;border-radius:28px;border:1px solid #EFECEF;overflow:hidden}
+.path-row{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.path-row:last-child{border-bottom:0}
+.path-icon{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;font-weight:700}
+.path-row.done .path-icon{background:var(--green-soft);color:var(--green)}
+.path-row.current .path-icon{background:var(--lav-soft);color:#7D5BC2}
+.path-row.idle .path-icon{background:#F2F0F4;color:#908796}
+.path-row h3{margin:0;font-size:17px}
+.path-row p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.lesson-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.lesson-side{display:grid;gap:18px}
+.rule{background:#FFF7F0;border-radius:26px;padding:22px}
+.rule strong{display:block;font-size:30px;line-height:1.08;letter-spacing:-.04em}
+.rule p{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.45}
+.script{background:linear-gradient(180deg,#F7F0FF,#fff);border-radius:26px;padding:22px;font-size:15px;line-height:1.55}
+.quiz-options{display:grid;gap:10px;margin-top:20px}
+.option{border:1px solid #EFECEF;background:#fff;border-radius:20px;padding:14px;display:grid;grid-template-columns:44px 1fr;gap:12px;text-align:left;align-items:center}
+.option .letter{width:44px;height:44px;border-radius:15px;background:#F3F0F7;color:#7754B6;display:grid;place-items:center;font-weight:700}
+.option.sel{outline:2px solid #E3D3FF;background:#FCFAFF}
 .option.sel .letter{background:var(--lav);color:#fff}
-.feedback{display:none;margin-top:14px;border-radius:20px;padding:14px 16px;font-size:14px;line-height:1.45}
+.feedback{display:none;margin-top:14px;border-radius:18px;padding:13px 15px;font-size:14px}
 .feedback.show{display:block}
-.feedback.good{background:var(--green2);color:var(--green)}
-.feedback.bad{background:#FFF0E6;color:#B95924}
-.result-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}
-.success-card{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
-.success-mark{width:76px;height:76px;border-radius:26px;background:var(--green2);color:var(--green);display:grid;place-items:center;font-size:34px}
-.success-card h2{font-size:38px;letter-spacing:-.045em;margin:18px 0 8px}
-.success-card p,.why-card p{color:var(--muted);line-height:1.45}
-.why-card{background:#FFF8F0;border-radius:28px;padding:22px}
-.why-card h3{font-size:24px;margin:0 0 8px}
-.practice-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
-.task-card,.status-card{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
-.task-card h2{font-size:36px;letter-spacing:-.04em;margin:0 0 10px}
-.task-card strong{display:block;font-size:24px;line-height:1.12;margin-top:18px}
-.task-card p,.status-card p{color:var(--muted);line-height:1.45}
-.status-head{display:flex;gap:12px;align-items:center}
-.status-icon{width:54px;height:54px;border-radius:18px;background:var(--yellow);display:grid;place-items:center;font-size:24px}
-.done-note{display:none;background:var(--green2);color:var(--green);border-radius:18px;padding:13px 15px;margin-top:14px;font-size:14px}
+.feedback.good{background:var(--green-soft);color:var(--green)}
+.feedback.bad{background:#FFF0E6;color:#B95A24}
+.result{display:grid;grid-template-columns:.75fr 1.25fr;gap:18px}
+.success{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
+.success-mark{width:72px;height:72px;border-radius:24px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:34px}
+.success h2{font-size:38px;letter-spacing:-.04em;margin:18px 0 8px}
+.success p,.why p{color:var(--muted);line-height:1.45}
+.why{background:#FFF8F0;border-radius:28px;padding:22px}
+.why h3{font-size:24px;margin:0 0 7px}
+.practice{display:grid;grid-template-columns:1fr .9fr;gap:18px}
+.task,.status{background:#fff;border-radius:28px;padding:22px;border:1px solid #EFECEF}
+.task h2{font-size:34px;letter-spacing:-.04em;margin:0}
+.task strong{display:block;font-size:23px;line-height:1.13;margin-top:18px}
+.task p,.status p{color:var(--muted);line-height:1.45}
+.status-top{display:flex;align-items:center;gap:12px}
+.status-icon{width:52px;height:52px;border-radius:17px;background:#F4D978;display:grid;place-items:center;font-size:24px}
+.done-note{display:none;background:var(--green-soft);color:var(--green);border-radius:17px;padding:12px 14px;margin-top:14px;font-size:13px}
 .done-note.show{display:block}
-.manager-list{display:grid;gap:13px}
-.manager-card .tag{display:inline-flex;height:30px;padding:0 11px;border-radius:999px;background:#F4EFFB;color:#7352A8;align-items:center;font-size:11px}
-.manager-card .tag.crit{background:#FFF0E6;color:#B95924}
-.manager-card h3{font-size:22px;margin:10px 0 5px}
-.manager-card p{margin:0;color:var(--muted);line-height:1.42;font-size:14px}
-@media(max-width:900px){
-  .outer{padding:0}
+.manager-list{background:#fff;border-radius:28px;border:1px solid #EFECEF;overflow:hidden}
+.manager-row{padding:18px;border-bottom:1px solid var(--line)}
+.manager-row:last-child{border-bottom:0}
+.tag{display:inline-flex;height:28px;align-items:center;padding:0 10px;border-radius:999px;background:#F3EFFA;color:#7655A9;font-size:11px}
+.tag.crit{background:#FFF0E6;color:#B95A24}
+.manager-row h3{margin:9px 0 4px;font-size:20px}
+.manager-row p{margin:0;color:var(--muted);font-size:13px}
+@media(max-width:860px){
+  .shell{padding:0}
   .app{border-radius:0}
-  .screen{min-height:100svh;padding:18px}
-  .topbar{grid-template-columns:1fr;gap:12px}
-  .search{order:3;max-width:none}
-  .actions{justify-content:flex-start}
-  .hero,.dashboard-grid,.lesson-grid,.result-grid,.practice-grid{grid-template-columns:1fr}
-  .hero-title{font-size:52px}
-  .staff-card{min-height:320px}
+  .screen{padding:18px;min-height:100svh}
+  .hero,.today-layout,.lesson-layout,.result,.practice{grid-template-columns:1fr}
+  .hero h1{font-size:48px}
+  .illustration{min-height:320px}
 }
-@media(max-width:620px){
-  .hero-title{font-size:46px}
-  .hero-copy{font-size:16px}
-  .next-card{grid-template-columns:1fr}
-  .fun-grid{grid-template-columns:1fr 1fr}
-  .fun-tile.orange{grid-column:1/-1}
-  .stats{gap:22px}
-  .stat strong{font-size:38px}
-  .path-item{grid-template-columns:52px 1fr auto}
-  .path-num{width:52px;height:52px;border-radius:17px}
-  .resume-panel h2,.lesson-card h2,.quiz-card h2{font-size:30px}
+@media(max-width:560px){
+  .topbar{align-items:flex-start;flex-direction:column;margin-bottom:24px}
+  .top-actions{width:100%;justify-content:flex-start;flex-wrap:wrap}
+  .hero h1{font-size:43px}
+  .hero p{font-size:16px}
+  .current{grid-template-columns:1fr auto}
+  .main-panel h2{font-size:30px}
+  .path-row{grid-template-columns:40px 1fr auto}
+  .path-icon{width:40px;height:40px;border-radius:13px}
 }
 </style>
 </head>
 <body>
-<div class="outer">
+<div class="shell">
 <main class="app">
 
 <section id="home" class="screen active">
   <div class="topbar">
-    <div class="brand">
-      <div class="logo">JD</div>
-      <div class="brand-copy">John Doe<br>Academy</div>
-    </div>
-    <div class="search"><span class="search-icon">⌕</span><span>Найти урок, тему или ответ…</span></div>
-    <div class="actions">
-      <div class="pill"><span>▥</span><span>Прогресс</span><strong>74%</strong></div>
-      <div class="pill"><div class="avatar">М</div><span>Привет, Маша</span></div>
-      <button class="pill orange" onclick="show('today')">Войти</button>
+    <div class="brand"><div class="logo">JD</div><span>John Doe Academy</span></div>
+    <div class="top-actions">
+      <div class="pill">Прогресс <strong>74%</strong></div>
+      <div class="pill"><div class="avatar">М</div><span>Маша</span></div>
     </div>
   </div>
 
   <div class="hero">
-    <div class="hero-left">
-      <h1 class="hero-title">Учиться <span class="accent">легко</span>.<br>Работать <span class="fun">уверенно</span>.</h1>
-      <p class="hero-copy">Короткие и практичные модули для команды John Doe. Больше уверенности в работе, лучшее гостеприимство каждый день.</p>
-
-      <div class="primary-row">
-        <button class="main-btn" onclick="show('today')"><span class="arrow">→</span>Открыть Academy</button>
-        <button class="secondary-btn" onclick="show('path')">Мой путь</button>
-        <div class="handnote">Развиваем людей,<br>создаём впечатления ♡</div>
-      </div>
-
-      <div class="next-card">
-        <div class="reserve-visual"></div>
-        <div class="next-copy">
-          <div class="next-tag">→ Следующий модуль</div>
-          <h3>Бронирования и опоздавшие гости</h3>
-          <p>Как грамотно работать с бронями, учитывать задержки и сохранять высокий уровень сервиса.</p>
-          <button class="small-link" onclick="show('lesson')">Продолжить →</button>
-        </div>
-      </div>
-
-      <div class="stats">
-        <div class="stat"><strong>12</strong><span>сотрудников</span></div>
-        <div class="stat"><strong>24+</strong><span>модуля</span></div>
-        <div class="stat"><strong>74%</strong><span>средний прогресс</span></div>
+    <div>
+      <h1>Учиться <span class="accent">легко</span>.<br>Работать <span class="underline">уверенно</span>.</h1>
+      <p>Короткие практичные модули для команды John Doe — без длинных инструкций и лишней бюрократии.</p>
+      <div class="hero-actions">
+        <button class="cta" onclick="show('today')"><span class="circle">→</span>Открыть Academy</button>
+        <button class="ghost" onclick="show('path')">Мой путь</button>
       </div>
     </div>
 
-    <div class="hero-right">
-      <div class="staff-card">
-        <svg viewBox="0 0 620 420" aria-hidden="true">
-          <defs>
-            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#F6D9C4"/>
-              <stop offset=".45" stop-color="#E9C2A6"/>
-              <stop offset="1" stop-color="#D7C8F0"/>
-            </linearGradient>
-          </defs>
-          <rect width="620" height="420" fill="url(#bg)"/>
-          <circle cx="505" cy="82" r="58" fill="#F3D778" opacity=".8"/>
-          <rect x="45" y="54" width="100" height="250" rx="48" fill="#784A31" opacity=".14"/>
-          <rect x="455" y="122" width="112" height="220" rx="56" fill="#7B5A46" opacity=".12"/>
-          <ellipse cx="245" cy="160" rx="55" ry="62" fill="#F1C7AA"/>
-          <ellipse cx="375" cy="152" rx="58" ry="65" fill="#EABF9E"/>
-          <path d="M200 140c15-52 88-65 108-6-12-17-26-25-43-23-25 3-35 21-65 29z" fill="#33241E"/>
-          <path d="M330 126c24-42 79-47 103-7-21-12-37-13-52-8-19 6-27 17-51 15z" fill="#4A332A"/>
-          <rect x="165" y="220" width="155" height="170" rx="44" fill="#2B292A"/>
-          <rect x="318" y="212" width="160" height="178" rx="46" fill="#292729"/>
-          <rect x="208" y="228" width="70" height="145" rx="28" fill="#EFEDEA"/>
-          <rect x="357" y="220" width="74" height="148" rx="30" fill="#F1EFEC"/>
-          <text x="214" y="298" font-family="Arial" font-size="23" fill="#F29A55" font-weight="700">JD</text>
-          <text x="369" y="291" font-family="Arial" font-size="23" fill="#F29A55" font-weight="700">JD</text>
-          <rect x="257" y="270" width="120" height="88" rx="15" fill="#292B30"/>
-          <rect x="270" y="283" width="94" height="60" rx="8" fill="#D9D2EF"/>
-          <circle cx="246" cy="160" r="5" fill="#2A201C"/>
-          <circle cx="377" cy="153" r="5" fill="#2A201C"/>
-          <path d="M230 181c12 12 25 12 37 0" stroke="#A04B42" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <path d="M357 177c12 11 26 11 39 0" stroke="#A04B42" stroke-width="4" fill="none" stroke-linecap="round"/>
-        </svg>
-        <div class="staff-caption">
-          <strong>Обучение прямо в рабочем контексте</strong>
-          <p>Коротко, понятно и с примерами из реальной смены.</p>
-        </div>
+    <div class="illustration">
+      <div class="blob one"></div>
+      <div class="blob two"></div>
+      <div class="staff">
+        <div class="person"></div>
+        <div class="person two"></div>
+        <div class="tablet"></div>
       </div>
-
-      <div class="fun-grid">
-        <div class="fun-tile yellow">♨</div>
-        <div class="fun-tile lav">✦</div>
-        <div class="fun-tile orange">
-          <h3>Микрообучение</h3>
-          <p>Уроки по 3–5 минут, которые легко вписать в рабочий день.</p>
-        </div>
-      </div>
+      <div class="illustration-note">Обучение прямо в рабочем контексте: коротко, понятно и по реальным ситуациям смены.</div>
     </div>
+  </div>
+
+  <div class="current">
+    <div>
+      <small>Следующий модуль · 4 минуты</small>
+      <h3>Бронирования и опоздавшие гости</h3>
+      <p>Правило 15 минут и нестандартные просьбы гостей.</p>
+    </div>
+    <button onclick="show('lesson')">→</button>
   </div>
 </section>
 
 <section id="today" class="screen">
-  <div class="header-simple">
-    <div class="header-left"><button class="back" onclick="show('home')">←</button><div><div class="header-title">Добрый вечер, Маша</div><div style="font-size:12px;color:var(--muted)">Официант · допуск действует</div></div></div>
-    <div class="view-chip">Сегодня</div>
+  <div class="header">
+    <div class="header-left"><button class="back" onclick="show('home')">←</button><div><div class="header-title">Маша</div><div class="header-sub">Официант · допуск действует</div></div></div>
+    <div class="mini-pill">Сегодня</div>
   </div>
-  <div class="dashboard-grid">
-    <div class="resume-panel">
-      <div style="font-size:12px;color:var(--muted)">Следующий модуль · 4 минуты</div>
+  <div class="today-layout">
+    <div class="main-panel">
+      <div style="font-size:12px;color:var(--muted)">Продолжить · 4 минуты</div>
       <h2 style="margin-top:7px">Бронирования и опоздавшие гости</h2>
-      <p>Стандартный звонок, 15 минут ожидания и что делать с нестандартными просьбами.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
-        <button class="main-btn" onclick="show('lesson')">Продолжить</button>
-        <button class="secondary-btn" onclick="show('path')">Мой путь</button>
-      </div>
+      <p>Стандартный звонок, 15 минут ожидания и нестандартные просьбы.</p>
+      <button class="cta" style="margin-top:18px" onclick="show('lesson')">Продолжить</button>
     </div>
-    <div class="side-panel">
-      <div style="background:#fff;border-radius:24px;padding:18px">
-        <div style="display:flex;justify-content:space-between;align-items:end"><div><div style="font-size:12px;color:var(--muted)">Путь</div><div style="font-size:15px;font-weight:700">Зал / сервис</div></div><div style="font-size:28px;font-weight:600">74%</div></div>
-        <div class="progress"><i style="width:74%"></i></div>
-      </div>
-      <div class="notice"><strong>Изменение:</strong> в праздничные дни время стола — 1,5–2 часа.</div>
+    <div class="progress-panel">
+      <div class="progress-row"><div><div style="font-size:12px;color:var(--muted)">Путь</div><div style="font-weight:700">Зал / сервис</div></div><strong>74%</strong></div>
+      <div class="progress"><i></i></div>
+      <div class="notice">В праздничные дни время стола — <strong>1,5–2 часа</strong>.</div>
     </div>
   </div>
 </section>
 
 <section id="path" class="screen">
-  <div class="header-simple">
-    <div class="header-left"><button class="back" onclick="show('today')">←</button><div><div class="header-title">Путь официанта</div><div style="font-size:12px;color:var(--muted)">6 из 8 модулей</div></div></div>
-    <div class="view-chip">Зал / сервис</div>
+  <div class="header">
+    <div class="header-left"><button class="back" onclick="show('today')">←</button><div><div class="header-title">Мой путь</div><div class="header-sub">Зал / сервис</div></div></div>
+    <div class="mini-pill">6 из 8</div>
   </div>
-  <div class="path-list">
-    <div class="path-item done"><div class="path-num">✓</div><div><h3>Открытие зала</h3><p>Пройдено</p></div><div>›</div></div>
-    <div class="path-item done"><div class="path-num">✓</div><div><h3>Шаги сервиса</h3><p>Пройдено</p></div><div>›</div></div>
-    <div class="path-item done"><div class="path-num">✓</div><div><h3>Меню: основы</h3><p>8/10 · пройдено</p></div><div>›</div></div>
-    <div class="path-item current" onclick="show('lesson')"><div class="path-num">04</div><div><h3>Бронирования</h3><p>Сейчас</p></div><div>→</div></div>
-    <div class="path-item idle"><div class="path-num">05</div><div><h3>Жалобы гостя</h3><p>Далее</p></div><div>›</div></div>
-    <div class="path-item idle"><div class="path-num">06</div><div><h3>Закрытие зала</h3><p>Практика + sign-off</p></div><div>›</div></div>
+  <div class="path-panel">
+    <div class="path-row done"><div class="path-icon">✓</div><div><h3>Открытие зала</h3><p>Пройдено</p></div><div>›</div></div>
+    <div class="path-row done"><div class="path-icon">✓</div><div><h3>Шаги сервиса</h3><p>Пройдено</p></div><div>›</div></div>
+    <div class="path-row done"><div class="path-icon">✓</div><div><h3>Меню: основы</h3><p>Пройдено</p></div><div>›</div></div>
+    <div class="path-row current" onclick="show('lesson')"><div class="path-icon">04</div><div><h3>Бронирования</h3><p>Сейчас</p></div><div>→</div></div>
+    <div class="path-row idle"><div class="path-icon">05</div><div><h3>Жалобы гостя</h3><p>Далее</p></div><div>›</div></div>
+    <div class="path-row idle"><div class="path-icon">06</div><div><h3>Закрытие зала</h3><p>Практика</p></div><div>›</div></div>
   </div>
 </section>
 
 <section id="lesson" class="screen">
-  <div class="header-simple">
-    <div class="header-left"><button class="back" onclick="show('today')">←</button><div><div class="header-title">Бронирования</div><div style="font-size:12px;color:var(--muted)">Урок 1 из 2</div></div></div>
-    <div class="view-chip">Реальная ситуация</div>
+  <div class="header">
+    <div class="header-left"><button class="back" onclick="show('today')">←</button><div><div class="header-title">Бронирования</div><div class="header-sub">Урок 1 из 2</div></div></div>
+    <div class="mini-pill">Ситуация</div>
   </div>
-  <div class="lesson-grid">
-    <div class="lesson-card">
+  <div class="lesson-layout">
+    <div class="main-panel">
       <h2>Гость опаздывает</h2>
-      <p>Если планы гостя изменились или он задерживается, просим предупредить.</p>
-      <div class="rule-box">
-        <strong>Обычную бронь держим 15 минут.</strong>
-        <p>Если нужно исключение — решение подтверждает менеджер.</p>
-      </div>
+      <p>Если планы изменились или гость задерживается, просим предупредить.</p>
+      <div class="rule"><strong>Обычную бронь держим 15 минут.</strong><p>Если нужно исключение — решение подтверждает менеджер.</p></div>
     </div>
-    <div style="display:grid;gap:14px">
-      <div class="script-box">«Если планы поменяются или будете задерживаться — пожалуйста, предупредите. Бронь держим 15 минут.»</div>
-      <div class="fun-tile orange" style="min-height:210px">
-        <h3>Главное</h3>
-        <p>Уверенный ответ — это точное следование стандарту, а не импровизация.</p>
-      </div>
+    <div class="lesson-side">
+      <div class="script">«Если планы поменяются или будете задерживаться — пожалуйста, предупредите. Бронь держим 15 минут.»</div>
+      <button class="cta" onclick="startQuiz()">Проверить себя</button>
     </div>
   </div>
-  <button class="main-btn" style="margin-top:18px" onclick="startQuiz()">Проверить себя</button>
 </section>
 
 <section id="quiz" class="screen">
-  <div class="header-simple">
-    <div class="header-left"><button class="back" onclick="show('lesson')">←</button><div><div class="header-title">Бронирования</div><div style="font-size:12px;color:var(--muted)">Вопрос 1 из 3</div></div></div>
-    <div class="view-chip">Тест</div>
+  <div class="header">
+    <div class="header-left"><button class="back" onclick="show('lesson')">←</button><div><div class="header-title">Бронирования</div><div class="header-sub">Вопрос 1 из 3</div></div></div>
+    <div class="mini-pill">Тест</div>
   </div>
-  <div class="quiz-card">
+  <div class="main-panel">
     <h2>Гость задержится на 20 минут. Что сделать?</h2>
     <div id="options" class="quiz-options"></div>
     <div id="feedback" class="feedback"></div>
-    <button id="quizNext" class="main-btn" style="margin-top:16px;display:none" onclick="show('result')">Показать результат</button>
+    <button id="quizNext" class="cta" style="margin-top:16px;display:none" onclick="show('result')">Дальше</button>
   </div>
 </section>
 
 <section id="result" class="screen">
-  <div class="header-simple">
+  <div class="header">
     <div class="header-left"><button class="back" onclick="show('quiz')">←</button><div class="header-title">Результат</div></div>
-    <div class="view-chip">1 / 3</div>
   </div>
-  <div class="result-grid">
-    <div class="success-card">
+  <div class="result">
+    <div class="success">
       <div class="success-mark">✓</div>
       <h2>Верно.</h2>
       <p>Правило подтверждаем, а нестандартные условия передаём менеджеру.</p>
-      <button class="main-btn" onclick="show('practice')">К практике →</button>
+      <button class="cta" onclick="show('practice')">К практике →</button>
     </div>
-    <div class="why-card">
+    <div class="why">
       <h3>Почему это важно</h3>
-      <p>Так команда не создаёт разные правила в зависимости от того, кто взял трубку, а гость получает честный и уверенный ответ.</p>
+      <p>Так команда не создаёт разные правила, а гость получает честный и уверенный ответ.</p>
     </div>
   </div>
 </section>
 
 <section id="practice" class="screen">
-  <div class="header-simple">
+  <div class="header">
     <div class="header-left"><button class="back" onclick="show('result')">←</button><div class="header-title">Практика</div></div>
-    <div class="view-chip">Следующий шаг</div>
   </div>
-  <div class="practice-grid">
-    <div class="task-card">
+  <div class="practice">
+    <div class="task">
       <h2>Проверить навык на смене</h2>
       <p>После теории менеджер должен увидеть навык в реальной работе.</p>
       <strong>Принять реальную бронь по телефону по стандарту.</strong>
       <p>Повторить данные гостю, проговорить 15 минут и корректно завершить разговор.</p>
-      <button class="secondary-btn" style="margin-top:18px" onclick="show('manager')">Открыть вид менеджера</button>
+      <button class="ghost" style="margin-top:18px" onclick="show('manager')">Открыть вид менеджера</button>
     </div>
-    <div class="status-card">
-      <div class="status-head">
-        <div class="status-icon">…</div>
-        <div><div style="font-size:20px;font-weight:700">Ждёт подтверждения</div><p>Таня или менеджер смены подтвердит навык.</p></div>
-      </div>
+    <div class="status">
+      <div class="status-top"><div class="status-icon">…</div><div><div style="font-size:19px;font-weight:700">Ждёт подтверждения</div><p>Таня или менеджер смены подтвердит навык.</p></div></div>
       <div id="doneNote" class="done-note">✓ Навык подтверждён. Допуск обновлён.</div>
     </div>
   </div>
 </section>
 
 <section id="manager" class="screen">
-  <div class="header-simple">
-    <div class="header-left"><button class="back" onclick="show('practice')">←</button><div><div class="header-title">Таня · обучение</div><div style="font-size:12px;color:var(--muted)">Требует внимания · 3</div></div></div>
-    <div class="view-chip">Менеджер</div>
+  <div class="header">
+    <div class="header-left"><button class="back" onclick="show('practice')">←</button><div><div class="header-title">Таня · обучение</div><div class="header-sub">3 требуют внимания</div></div></div>
   </div>
   <div class="manager-list">
-    <div class="manager-card"><span class="tag crit">Просрочено</span><h3>Саша · переаттестация бара</h3><p>Просрочено 2 дня.</p></div>
-    <div class="manager-card"><span class="tag">Ждёт sign-off</span><h3>Маша · Бронирования</h3><p>Теория пройдена, практика выполнена на смене.</p><button id="signoff" class="main-btn" style="margin-top:14px" onclick="confirmSkill()">Подтвердить навык</button></div>
-    <div class="manager-card"><span class="tag">Повторяющаяся ошибка</span><h3>Илья · Бронирования</h3><p>2 ошибки в теме исключений для опоздавших гостей.</p></div>
+    <div class="manager-row"><span class="tag crit">Просрочено</span><h3>Саша · переаттестация бара</h3><p>2 дня.</p></div>
+    <div class="manager-row"><span class="tag">Ждёт sign-off</span><h3>Маша · Бронирования</h3><p>Теория пройдена, практика выполнена.</p><button id="signoff" class="cta" style="margin-top:14px" onclick="confirmSkill()">Подтвердить навык</button></div>
+    <div class="manager-row"><span class="tag">Повторяющаяся ошибка</span><h3>Илья · Бронирования</h3><p>2 ошибки в теме исключений.</p></div>
   </div>
 </section>
 
@@ -398,38 +312,27 @@ body{min-height:100vh}
 </div>
 <script>
 const screens=[...document.querySelectorAll('.screen')];
-function show(id){
-  screens.forEach(s=>s.classList.toggle('active',s.id===id));
-  window.scrollTo({top:0,behavior:'instant'});
-}
+function show(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));window.scrollTo({top:0,behavior:'instant'})}
 function startQuiz(){
   show('quiz');
-  const answers=[
-    'Пообещать держать стол 30 минут.',
-    'Сразу снять бронь.',
-    'Напомнить про 15 минут и уточнить у менеджера, можно ли сохранить стол дольше.',
-    'Ничего не уточнять и просто ждать.'
-  ];
-  const box=document.getElementById('options');
-  box.innerHTML='';
+  const answers=['Пообещать держать стол 30 минут.','Сразу снять бронь.','Напомнить про 15 минут и уточнить у менеджера, можно ли сохранить стол дольше.','Ничего не уточнять.'];
+  const box=document.getElementById('options'); box.innerHTML='';
   answers.forEach((text,i)=>{
     const b=document.createElement('button');
     b.className='option';
     b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+text+'</span>';
-    b.onclick=()=>chooseAnswer(i,b);
+    b.onclick=()=>answer(i,b);
     box.appendChild(b);
   });
   document.getElementById('feedback').className='feedback';
   document.getElementById('quizNext').style.display='none';
 }
-function chooseAnswer(index,el){
+function answer(i,el){
   document.querySelectorAll('.option').forEach(x=>x.disabled=true);
   el.classList.add('sel');
   const f=document.getElementById('feedback');
-  f.className='feedback show '+(index===2?'good':'bad');
-  f.textContent=index===2
-    ? 'Верно. 15 минут — стандарт, а исключение подтверждает менеджер.'
-    : 'Не совсем. По стандарту держим бронь 15 минут, а исключение подтверждает менеджер.';
+  f.className='feedback show '+(i===2?'good':'bad');
+  f.textContent=i===2?'Верно. 15 минут — стандарт, исключение подтверждает менеджер.':'Не совсем. Стандарт — 15 минут, исключение подтверждает менеджер.';
   document.getElementById('quizNext').style.display='inline-flex';
 }
 function confirmSkill(){
